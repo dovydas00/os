@@ -1,0 +1,33 @@
+CS:
+PS40
+GW90
+GW91
+LR90
+SB91
+CR83
+JG04
+PS64
+PW91
+JE12
+PS71
+JP13
+PS68
+PS74
+PW90
+PS78
+HALT
+DS:
+SW00 Prašau įvesti skaičių, kurio dalumą norite tikrinti, ir skaičių, iš kurio bus dalinama:
+SW22 nnnn
+SW EOF$
+SW24 Skaičius 
+SW EOF$
+SW28  yra
+SW EOF$
+SW31  nėra
+SW EOF$
+SW34  skaičiaus 
+SW EOF$
+SW38  daliklis.
+SW EOF$
+SW43 0
