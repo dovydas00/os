@@ -2,8 +2,8 @@ package osProjektas;
 
 public class Memory {
 	
-	static public int stackSize = 100;
-	static public int BLOCK_SIZE = 16; // Bloką sudaro 16 žodžių
+	static public int blocks = 100;
+	static public int blockSize = 10; // Bloką sudaro 16 žodžių
 	static int CELL_SIZE = 4; // Žodį sudaro 4 baitai
 	static String FILL_SYMBOL = ""; // užpido atminti tuščiu stringu
 	public static String[][] memory; // atmintis tai
@@ -18,7 +18,7 @@ public class Memory {
 	}
 
 	public static void createMemory() {
-		memory = new String[stackSize][10];
+		memory = new String[blocks][10];
 	}
 
 	public static String getMemoryAtIs() {
@@ -28,7 +28,7 @@ public class Memory {
 
 	public static void assignStackToMemory() {
 
-		stack = memory[stackSize];
+		stack = memory[blocks-1];
 
 	}
 	

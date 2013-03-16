@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException{
     	Memory.createMemory();
     	for (int i=0; i<10;i++){
-    		Memory.memory[10][i] = "aasd";
+    		Memory.memory[Memory.blocks-1][i] = "aasd";
     	}
     	Memory.assignStackToMemory(); // Nustato stekui atminties vietas
     	for (int i=0; i<10;i++){
