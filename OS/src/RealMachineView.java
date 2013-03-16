@@ -1,3 +1,4 @@
+package GUI;
 
 /**
  *
@@ -9,19 +10,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
+import mos.Memory;
+import mos.RealMachine;
 
 public class RealMachineView extends JFrame {
     

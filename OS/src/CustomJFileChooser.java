@@ -1,4 +1,4 @@
-
+package GUI;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -16,7 +16,7 @@ public class CustomJFileChooser extends JFileChooser {
     
     public void customizeAppearance() {
         UIManager.put( "FileChooser.openDialogTitleText" , "Pasirinkti" );
-        UIManager.put( "FileChooser.lookInLabelText", "Iškoti" );
+        UIManager.put( "FileChooser.lookInLabelText", "Ieškoti" );
         UIManager.put( "FileChooser.openButtonText", "Atverti" );
         UIManager.put( "FileChooser.directoryOpenButtonText", "Atverti" );
         UIManager.put( "FileChooser.directoryOpenButtonToolTipText", "Atverti" );
