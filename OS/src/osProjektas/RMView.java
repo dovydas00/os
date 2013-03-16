@@ -50,8 +50,8 @@ public class RMView extends JFrame {
 	    JTextArea inputField = new JTextArea();
 	    JTextArea outputField = new JTextArea();
 	    JTextArea errorField = new JTextArea();
-	    JTable table = new JTable( ( RM.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
-	                              Memory.BLOCK_SIZE );
+	    JTable table = new JTable( ( RM.MEMORY_SIZE / Memory.blockSize ), 
+	                              Memory.blockSize );
 	    
 	    public RMView( RM RM ){
 	        this.setResizable( false );
@@ -221,8 +221,8 @@ public class RMView extends JFrame {
 	     */
 	        
 	    public void fillTable() {
-	        for( int i = 0; i <  RM.MEMORY_SIZE / Memory.BLOCK_SIZE ; i++ ){
-	            for( int j = 0; j <  Memory.BLOCK_SIZE; j++ ){
+	        for( int i = 0; i <  RM.MEMORY_SIZE / Memory.blockSize ; i++ ){
+	            for( int j = 0; j <  Memory.blockSize; j++ ){
 	      //          this.table.setValueAt( RM.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
 	            }
 	        }
@@ -245,19 +245,19 @@ public class RMView extends JFrame {
 	                                                    ) 
 	                                     );
 	        
-	        for ( int i = 0; i < Memory.BLOCK_SIZE; i++ ) {
+	        for ( int i = 0; i < Memory.blockSize; i++ ) {
 	            columnHeader.getColumnModel().getColumn( i ).setHeaderValue( i );
 	        }
 	        
 	        JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
 	        
-	        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
+	        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.blockSize; j++ ) {
 	            JLabel rowLabel = new JLabel( Integer.toString( j ) );
 	            rowLabel.setOpaque( true );
 	            rowLabel.setHorizontalAlignment( JLabel.CENTER );
 	          //RM bloku nr plotis
 	            rowLabel.setPreferredSize( new Dimension( 
-	                                            500 / ( Memory.BLOCK_SIZE + 1 ), 
+	                                            500 / ( Memory.blockSize + 1 ), 
 	                                            table.getRowHeight() 
 	                                           ) 
 	                                     );
@@ -284,7 +284,7 @@ public class RMView extends JFrame {
 	        cornerLabel.setHorizontalAlignment( JLabel.CENTER );
 	      //RM ?????
 	        cornerLabel.setPreferredSize( new Dimension( 
-	                                        400 / ( Memory.BLOCK_SIZE + 1 ), 
+	                                        400 / ( Memory.blockSize + 1 ), 
 	                                        table.getRowHeight() 
 	                                        ) 
 	                                    );
