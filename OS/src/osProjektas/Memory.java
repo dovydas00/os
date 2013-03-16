@@ -1,13 +1,14 @@
 package osProjektas;
 
 public class Memory {
-	
+
 	static public int blocks = 100;
 	static public int blockSize = 10; // Bloką sudaro 16 žodžių
 	static int CELL_SIZE = 4; // Žodį sudaro 4 baitai
 	static String FILL_SYMBOL = ""; // užpido atminti tuščiu stringu
 	public static String[][] memory; // atmintis tai
 	public static String stack[]; // vienamtis
+
 	// masyvas
 
 	public static void checkIfFree(int block) {
@@ -28,12 +29,28 @@ public class Memory {
 
 	public static void assignStackToMemory() {
 
-		stack = memory[blocks-1];
-
+		stack = memory[blocks - 1];
+		//Processor.sv= 9;
+		
 	}
-	
-	public static void push(){
-	
+
+	public static void push() {
+		if (stack == null){
+			assignStackToMemory();
+		}
+		
+		stack[Processor.sv] = Processor.is.toString();
+		Processor.sv++;
+		//Processor.sv = stack.length;
+	}
+
+	public static void pop() {
+		Processor.sv--;
+		Processor.is = Integer.parseInt(Memory.stack[Processor.sv]);
+		Memory.stack[Processor.sv] = "";
+		
+		// Memory.stack[Processor.sv] = "0";
+
 	}
 
 }

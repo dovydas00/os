@@ -9,7 +9,7 @@ public class Processor {
 	static int sv = 0;
 	static int cx = 0;
 	static int pr = 0;
-	static int is = 0;
+	static Integer is = 0;
 
 	// Pertraukimo registrai
 	static int pp = 0;

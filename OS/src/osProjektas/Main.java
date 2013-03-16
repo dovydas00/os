@@ -8,11 +8,15 @@ public class Main {
     public static void main(String[] args) throws IOException{
     	Memory.createMemory();
     	for (int i=0; i<10;i++){
-    		Memory.memory[Memory.blocks-1][i] = "aasd";
+    		Processor.is = i;
+    		Memory.push();
+    		//Memory.memory[Memory.blocks-1][i] = i + "";
     	}
-    	Memory.assignStackToMemory(); // Nustato stekui atminties vietas
+    //	Memory.assignStackToMemory(); // Nustato stekui atminties vietas
+    	
     	for (int i=0; i<10;i++){
-    		System.out.println(Memory.stack[i]);
+    		Memory.pop();
+    		System.out.println(Processor.is);
     	}
     	
        
