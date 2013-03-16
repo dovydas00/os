@@ -33,8 +33,8 @@ public class VMView extends JFrame{
     RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
     RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
-    JTable table = new JTable( ( VM.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
-                              Memory.BLOCK_SIZE );
+    JTable table = new JTable( ( VM.MEMORY_SIZE / Memory.blockSize ), 
+                              Memory.blockSize );
 	
     public VMView( VM machine ){
         setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
@@ -84,9 +84,9 @@ public class VMView extends JFrame{
     }
     
     private void fillTable() {
-        for ( int i = 0; i < VM.MEMORY_SIZE / Memory.BLOCK_SIZE; i ++ ) {
-            for ( int j = 0; j < Memory.BLOCK_SIZE; j++ ) {
-                table.setValueAt( machine.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
+        for ( int i = 0; i < VM.MEMORY_SIZE / Memory.blockSize; i ++ ) {
+            for ( int j = 0; j < Memory.blockSize; j++ ) {
+                table.setValueAt( machine.getMemoryContent( i * Memory.blockSize + j ), i, j );
             }
         }
         
@@ -118,18 +118,18 @@ public class VMView extends JFrame{
                                                     ) 
                                      );
         
-        for ( int i = 0; i < Memory.BLOCK_SIZE; i++ ) {
+        for ( int i = 0; i < Memory.blockSize; i++ ) {
             columnHeader.getColumnModel().getColumn( i ).setHeaderValue( i );
         }
         
         JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
         
-        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
+        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.blockSize; j++ ) {
             JLabel rowLabel = new JLabel( Integer.toString( j ) );
             rowLabel.setOpaque( true );
             rowLabel.setHorizontalAlignment( JLabel.CENTER );
             rowLabel.setPreferredSize( new Dimension( 
-                                            500 / ( Memory.BLOCK_SIZE + 1 ), 
+                                            500 / ( Memory.blockSize + 1 ), 
                                             table.getRowHeight() 
                                            ) 
                                      );
@@ -142,7 +142,7 @@ public class VMView extends JFrame{
         
         JScrollPane tableCellPane = new JScrollPane( table );
         tableCellPane.setPreferredSize( new Dimension( 500, table.getRowHeight() * 
-                                      ( Memory.BLOCK_SIZE + 1 ) + 2 ) );
+                                      ( Memory.blockSize + 1 ) + 2 ) );
         tableCellPane.setHorizontalScrollBarPolicy( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER );
         tableCellPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER );
         tableCellPane.setRowHeaderView( rowHeader );
@@ -151,7 +151,7 @@ public class VMView extends JFrame{
         cornerLabel.setOpaque( true );
         cornerLabel.setHorizontalAlignment( JLabel.CENTER );
         cornerLabel.setPreferredSize( new Dimension( 
-                                        500 / ( Memory.BLOCK_SIZE + 1 ), 
+                                        500 / ( Memory.blockSize + 1 ), 
                                         table.getRowHeight() 
                                         ) 
                                     );
