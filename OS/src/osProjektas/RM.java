@@ -4,8 +4,10 @@ public class RM {
     static public int MEMORY_SIZE = 4095;
     static public int PTR_MEMORY_RANGE = 5;
     
-    private Memory memory = new Memory( RM.MEMORY_SIZE );
-    public Processor processor = new Processor( memory );
+    //private Memory memory = new Memory( RM.MEMORY_SIZE );
+    private Memory memory = new Memory();
+    public Processor processor = new Processor();
+    //public Processor processor = new Processor( memory );
     public Reader reader = new Reader();
     //private VMView[] virtualMachines = new VMView[2];
     //private Integer vmId = 0;
@@ -16,10 +18,11 @@ public class RM {
 
     
     public VM createVM ( ) {
-        processor.setIC( 0 );
-        processor.setIs( 0 );
-        VM vm = new VM( processor, processor.getPlr() );
-        VMView window = new VMView( vm );
+        //processor.setIC( 0 );
+        //processor.setIs( 0 );
+        //VM vm = new VM( processor, processor.getPlr() );
+        VM vm = new VM ();
+    	VMView window = new VMView( vm );
         virtualMachines[ processor.getPlr() ] = window;
         VirtualMachineController vmc = new VirtualMachineController( window, vm );
         vmId++;

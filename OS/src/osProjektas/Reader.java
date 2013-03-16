@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class Reader {
     
-    private Memory dataArray = new Memory( VM.MEMORY_SIZE );
+    //private Memory dataArray = new Memory( VM.MEMORY_SIZE );
     private BufferedReader reader;
     private int n;
     
@@ -64,7 +64,7 @@ public class Reader {
         }
     
         while( !( ( fileLine = reader.readLine() ).startsWith( "DS:" ) ) ){
-            parseCodeSegment( fileLine );
+           // parseCodeSegment( fileLine );
         }
     
         n = VM.DATA_SEGMENT_START;
@@ -82,10 +82,10 @@ public class Reader {
      *      Kodo segmento eilutÄ—.
      */
     
-    private void parseCodeSegment ( String codeLine ) {
+    /*private void parseCodeSegment ( String codeLine ) {
         dataArray.setMemory( n, codeLine );
         n++;
-    }
+    }*/
     
     /**
      * Apdorojama duomenÅ³ segmento eilutÄ— ir Ä¯raÅ¡oma Ä¯ masyvÄ….
@@ -111,13 +111,13 @@ public class Reader {
         while( k < residueStart ){
             subSeq = dataLine.substring( k, k + Memory.CELL_SIZE );
             k += Memory.CELL_SIZE;
-            dataArray.setMemory( n, subSeq );
+            //dataArray.setMemory( n, subSeq );
             n++;
         }
         
         subSeq = dataLine.substring( residueStart );
         if ( !subSeq.equals( "" ) ) {
-            dataArray.setMemory( n, subSeq );
+           // dataArray.setMemory( n, subSeq );
             n++;
         }
     }
@@ -129,17 +129,17 @@ public class Reader {
      *      DuomenÅ³ masyvas.
      */
     
-    public Memory getDataArray() {
-        return this.dataArray;
-    }
+  /*  public Memory getDataArray() {
+       // return this.dataArray;
+    }*/
     
     /**
      * DuomenÅ³ masyvas iÅ¡vedamas Ä¯ standartinÄ™ iÅ¡vestÄ¯. Naudojama diagnostikai.
      */
     
-    public void printDataArray() {       
+   /* public void printDataArray() {       
         for( int i = 0; i < dataArray.length; i++ ){
             System.out.println( i + " " + dataArray.getMemory( i ) );
         }
-    }
+    }*/
 }
