@@ -6,6 +6,15 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException{
+    	Memory.createMemory();
+    	for (int i=0; i<10;i++){
+    		Memory.memory[10][i] = "aasd";
+    	}
+    	//Memory.assignStackToMemory(); // Nustato stekui atminties vietas
+    	for (int i=0; i<10;i++){
+    		System.out.println(Memory.memory[10][i]);
+    	}
+    	
        
        boolean debug = false;
        Reader reader = new Reader();
