@@ -7,8 +7,8 @@
  */
 
 public class VirtualMachine {
-    static public int MEMORY_SIZE = 100;
-    static public int DATA_SEGMENT_START = 40;
+    static public int MEMORY_SIZE = 255;
+    static public int DATA_SEGMENT_START = 75;
     public Processor processor;
     private boolean debug = false;
     private int id;

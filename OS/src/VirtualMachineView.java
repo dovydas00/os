@@ -30,12 +30,12 @@ public class VirtualMachineView extends JFrame {
     int registerWidth = 3;
     private CustomTableCellRenderer renderer;
     
-    RegisterTextField ic = new RegisterTextField( registerWidth, "IC" );
-    RegisterTextField rn = new RegisterTextField( registerWidth, "RN" );
     RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
     RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
-    RegisterTextField c = new RegisterTextField( registerWidth, "C" );
-    RegisterTextField ptr = new RegisterTextField( registerWidth, "PTR" );
+    RegisterTextField cx = new RegisterTextField( registerWidth, "CX" );
+    RegisterTextField sv = new RegisterTextField( registerWidth, "SV" );
+    RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
+    RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
     JTable table = new JTable( ( VirtualMachine.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
                               Memory.BLOCK_SIZE );
@@ -58,18 +58,18 @@ public class VirtualMachineView extends JFrame {
                                  ) 
                                );
         
-        registerPanel.add( ic.label );
-        registerPanel.add( ic );
+        registerPanel.add( sv.label );
+        registerPanel.add( sv );
         registerPanel.add( r1.label );
         registerPanel.add( r1 );
-        registerPanel.add( c.label );
-        registerPanel.add( c );
-        registerPanel.add( rn.label );
-        registerPanel.add( rn );
+        registerPanel.add( cx.label );
+        registerPanel.add( cx );
+        registerPanel.add( pr.label );
+        registerPanel.add( pr );
         registerPanel.add( r2.label );
         registerPanel.add( r2 );
-        registerPanel.add( ptr.label );
-        registerPanel.add( ptr );
+        registerPanel.add( is.label );
+        registerPanel.add( is );
 
         exitButton = new JButton( "Baigti darbą" );
         
@@ -99,12 +99,12 @@ public class VirtualMachineView extends JFrame {
     }
     
     private void setRegisters() {
-        ptr.setText( processor.getPTR().toString() );
-        rn.setText( processor.getRN().toString() );
+    	pr.setText( processor.getPTR().toString() );
+        is.setText( processor.getRN().toString() );
         r1.setText( processor.getR1() );
         r2.setText( processor.getR2() );
-        c.setText( processor.getC().toString() );
-        ic.setText( processor.getIC().toString() );
+        cx.setText( processor.getC().toString() );
+        sv.setText( processor.getIC().toString() );
     }
     
     private JPanel getTablePanel() {
