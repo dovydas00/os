@@ -4,7 +4,7 @@ public class Processor {
 	// Pagrindiniai registrai
 	static Integer r1 = 0;
 	static int r2 = 0;
-	static int[] plr = { '0', '0', '0', 'F' };
+	static int[] plr = { '0', '0', '0', '9' };
 	static int bus = 0;
 	static int sv = 0;
 	static int cx = 0;
