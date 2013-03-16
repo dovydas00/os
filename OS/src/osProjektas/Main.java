@@ -10,9 +10,9 @@ public class Main {
     	for (int i=0; i<10;i++){
     		Memory.memory[10][i] = "aasd";
     	}
-    	//Memory.assignStackToMemory(); // Nustato stekui atminties vietas
+    	Memory.assignStackToMemory(); // Nustato stekui atminties vietas
     	for (int i=0; i<10;i++){
-    		System.out.println(Memory.memory[10][i]);
+    		System.out.println(Memory.stack[i]);
     	}
     	
        
