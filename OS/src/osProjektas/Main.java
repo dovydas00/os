@@ -7,7 +7,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
     	Memory.createMemory();
-    	for (int i=0; i<10;i++){
+    
+    	/*for (int i=0; i<10;i++){
     		Processor.is = i;
     		Memory.push();
     		
@@ -19,7 +20,10 @@ public class Main {
     		Memory.pop();
     		System.out.println(Processor.is);
     	}
-    	
+    	*/
+    	Memory.memory[0][0] = "testas";
+    	Processor.is=0;
+    	Processor.interpretCommand();
        
        boolean debug = false;
        Reader reader = new Reader();

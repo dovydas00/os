@@ -32,202 +32,218 @@ public class Processor {
 		is++;
 		r2 = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignCx(int value) {
 		is++;
 		cx = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void loadRegister() {
-		//r1 =
+		// r1 =
 	}
-	
+
 	public static void saveRegisterToMemory() {
-		//[x*10+y]=r1
+		// [x*10+y]=r1
 	}
-	
+
 	public static void halt() {
 		//
 	}
-	
+
 	public static void addToRegister() {
 		r1 = r1 + Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void substractFromRegister() {
 		r1 = r1 - Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void multiplyRegister() {
 		r1 = r1 * Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void divideRegister() {
-		//r1 = r1 + Integer.parseInt(Memory.getMemoryAtIs());
+		// r1 = r1 + Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void compare() {
 		//
 	}
-	
+
+	public static void interpretCommand() {
+
+		switch (getCommand()){
+		case "testas": test();
+		}
+		
+		
+		
+	}
+
 	/**
-	 * Jump If Equal
-	 * if PR == 0 then IS:= [x*10+y]
+	 * Jump If Equal if PR == 0 then IS:= [x*10+y]
+	 * 
 	 * @param x
 	 * @param y
 	 */
 	public static void JIE(int x, int y) {
-		if(pr == 0){
-			is = x*10+y;
+		if (pr == 0) {
+			is = x * 10 + y;
 		}
 	}
-	
+
 	/**
-	 * Jump If Greater
-	 * if PR == 1 then IS:= [x*10+y]
+	 * Jump If Greater if PR == 1 then IS:= [x*10+y]
+	 * 
 	 * @param x
 	 * @param y
 	 */
 	public static void JIG(int x, int y) {
-		if(pr == 1){
-			is = x*10+y;
+		if (pr == 1) {
+			is = x * 10 + y;
 		}
 	}
-	
+
 	/**
-	 * Jump If Less
-	 * if PR == -1 then IS:= [x*10+y]
+	 * Jump If Less if PR == -1 then IS:= [x*10+y]
+	 * 
 	 * @param x
 	 * @param y
 	 */
 	public static void JIL(int x, int y) {
-		if(pr == -1){
-			is = x*10+y;
+		if (pr == -1) {
+			is = x * 10 + y;
 		}
 	}
-	
+
 	/**
-	 * Just jump...
-	 * jump where?
+	 * Just jump... jump where?
+	 * 
 	 * @param x
 	 * @param y
 	 */
-	//push adresas
+	// push adresas
+	public static void test() {
+
+		System.out.println("Testas suveike");
+	}
+
 	public static void JMP(int x, int y) {
 		is = x * 10 + y;
 	}
-	
+
 	public static void getWord() {
 		//
 	}
-	
+
 	public static void getMemoryBlock() {
 		//
 	}
-	
+
 	public static void printWord() {
 		//
 	}
-	
+
 	public static void printString() {
 		//
 	}
-	
+
 	public static void call() {
 		//
 	}
-	
+
 	public static void back() {
 		//
 	}
-	
+
 	public static void push() {
 		//
 	}
-	
+
 	public static void pops() {
 		//
 	}
-	
+
 	public static void loop() {
 		//
 	}
-	
+
 	public static void assign() {
 		//
 	}
-	
+
 	public static void assignIs() {
-		//is++;
+		// is++;
 		is = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignPr() {
-		//is++;
+		// is++;
 		pr = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignPlr() {
-		//is++;
+		// is++;
 		plr = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignBus() {
-		//is++;
+		// is++;
 		bus = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignSv() {
-		//is++;
+		// is++;
 		sv = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignPp() {
-		//is++;
+		// is++;
 		pp = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignAp() {
-		//is++;
+		// is++;
 		ap = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignK1() {
-		//is++;
+		// is++;
 		k1 = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignK2() {
-		//is++;
+		// is++;
 		k2 = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignK3() {
-		//is++;
+		// is++;
 		k3 = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignK4() {
-		//is++;
+		// is++;
 		k4 = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignLk() {
-		//is++;
+		// is++;
 		lk = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void assignSp() {
-		//is++;
+		// is++;
 		sp = Integer.parseInt(Memory.getMemoryAtIs());
 	}
-	
+
 	public static void reloadRegister() {
-		//is++;
+		// is++;
 	}
-	
-	//gauti komanda nurodyta registru
-	public static void getCommand() {
-		//return
+
+	// gauti komanda nurodyta registru
+	public static String getCommand() {
+
+		return Memory.getMemoryAtIs();
 	}
 }
