@@ -23,7 +23,7 @@ public class Processor {
 
 	static Byte[] asd = new Byte[4];
 
-	public static void priskirtiR1RegistruiReikšmę(int value) {
+	public static void assignR1(int value) {
 		is++;
 		r1 = Integer.parseInt(Memory.getMemoryAtIs());
 
@@ -32,14 +32,6 @@ public class Processor {
 	public static void JMP(int x, int y) {
 
 		is = x * 10 + y;
-	}
-
-	public static void main(String args[]) {
-
-	}
-
-	public static void šokti(int x, int y) {
-		// is = x * 16 + y;
 	}
 
 }
