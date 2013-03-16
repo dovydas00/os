@@ -16,7 +16,7 @@ public class RealMachine {
     public Reader reader = new Reader();
     private VirtualMachineView[] virtualMachines = new VirtualMachineView[2];
     private Integer vmId = 0;
-    
+    //Komentarai Lukui
     /**
      * Konstruktorius išvalantis realią atmintį.
      */
