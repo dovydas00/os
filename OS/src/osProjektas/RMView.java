@@ -21,7 +21,7 @@ import javax.swing.table.JTableHeader;
 public class RMView extends JFrame {
     
     JPanel mainPanel = new JPanel();
-    //private RealMachine realMachine;
+    //private RM RM;
     
     JButton reloadButton = new JButton( "Perkrauti" );
     JButton executeButton = new JButton( "Kita komanda" );
@@ -50,13 +50,13 @@ public class RMView extends JFrame {
     JTextArea inputField = new JTextArea();
     JTextArea outputField = new JTextArea();
     JTextArea errorField = new JTextArea();
-    JTable table = new JTable( ( RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
+    JTable table = new JTable( ( RM.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
                               Memory.BLOCK_SIZE );
     
-    public RMView( RealMachine realMachine ){
+    public RMView( RM RM ){
         this.setResizable( false );
         this.setLocation( 5, 5 );
-        this.realMachine = realMachine;
+        this.RM = RM;
         
         setSize( 800, 690 ); 
         setTitle( "Reali mašina" );
@@ -105,7 +105,7 @@ public class RMView extends JFrame {
                               );
         channelPanel.setPreferredSize( 
                       new Dimension( 250, table.getRowHeight() * 
-                          ( RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE + 1 ) ) );
+                          ( RM.MEMORY_SIZE / Memory.BLOCK_SIZE + 1 ) ) );
         
         channelPanel.add( inputScrollPane );
         channelPanel.add( outputScrollPane );
@@ -196,23 +196,23 @@ public class RMView extends JFrame {
     }
     
     private void setRegisters() {
-        sv.setText( realMachine.processor.getSI().toString() );
-        pp.setText( realMachine.processor.getPI().toString() );
-        ap.setText( realMachine.processor.getTI().toString() );           
-        plr.setText( realMachine.processor.getPTR().toString() );
-        is.setText( realMachine.processor.getRN().toString() );
-        r1.setText( realMachine.processor.getR1() );
-        r2.setText( realMachine.processor.getR2() );
-        pr.setText( realMachine.processor.getC().toString() );
-        cx.setText( realMachine.processor.getIC().toString() );
-        bus.setText( realMachine.processor.getMode().toString() );     
+        sv.setText( RM.processor.getSI().toString() );
+        pp.setText( RM.processor.getPI().toString() );
+        ap.setText( RM.processor.getTI().toString() );           
+        plr.setText( RM.processor.getPTR().toString() );
+        is.setText( RM.processor.getRN().toString() );
+        r1.setText( RM.processor.getR1() );
+        r2.setText( RM.processor.getR2() );
+        pr.setText( RM.processor.getC().toString() );
+        cx.setText( RM.processor.getIC().toString() );
+        bus.setText( RM.processor.getMode().toString() );     
         
-        k1.setText( realMachine.processor.getMode().toString() ); 
-        k2.setText( realMachine.processor.getMode().toString() ); 
-        k3.setText( realMachine.processor.getMode().toString() ); 
-        k4.setText( realMachine.processor.getMode().toString() ); 
-        lk.setText( realMachine.processor.getMode().toString() ); 
-        sp.setText( realMachine.processor.getMode().toString() ); 
+        k1.setText( RM.processor.getMode().toString() ); 
+        k2.setText( RM.processor.getMode().toString() ); 
+        k3.setText( RM.processor.getMode().toString() ); 
+        k4.setText( RM.processor.getMode().toString() ); 
+        lk.setText( RM.processor.getMode().toString() ); 
+        sp.setText( RM.processor.getMode().toString() ); 
         
     }
     
@@ -221,13 +221,13 @@ public class RMView extends JFrame {
      */
         
     public void fillTable() {
-        for( int i = 0; i <  RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE ; i++ ){
+        for( int i = 0; i <  RM.MEMORY_SIZE / Memory.BLOCK_SIZE ; i++ ){
             for( int j = 0; j <  Memory.BLOCK_SIZE; j++ ){
-                this.table.setValueAt( realMachine.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
+                this.table.setValueAt( RM.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
             }
         }
         
-        renderer.setIC( realMachine.processor.page( realMachine.processor.getIC() ) );
+        renderer.setIC( RM.processor.page( RM.processor.getIC() ) );
         table.setEnabled( false );
     }
     
@@ -251,7 +251,7 @@ public class RMView extends JFrame {
         
         JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
         
-        for ( int j = 0; j < RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
+        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
             JLabel rowLabel = new JLabel( Integer.toString( j ) );
             rowLabel.setOpaque( true );
             rowLabel.setHorizontalAlignment( JLabel.CENTER );
@@ -269,7 +269,7 @@ public class RMView extends JFrame {
         
         JScrollPane tableCellPane = new JScrollPane( table );
         tableCellPane.setPreferredSize( new Dimension( 500, table.getRowHeight() * 
-                                      ( RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE + 1 ) + 2 ) );
+                                      ( RM.MEMORY_SIZE / Memory.BLOCK_SIZE + 1 ) + 2 ) );
         tableCellPane.setHorizontalScrollBarPolicy( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER );
         tableCellPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER );
         tableCellPane.setRowHeaderView( rowHeader );

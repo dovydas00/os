@@ -17,10 +17,10 @@ public class RM {
     
     public VM createVM ( ) {
         processor.setIC( 0 );
-        processor.setSI( 0 );
-        VM vm = new VM( processor, processor.getPTR() );
+        processor.setIs( 0 );
+        VM vm = new VM( processor, processor.getPlr() );
         VMView window = new VMView( vm );
-        virtualMachines[ processor.getPTR() ] = window;
+        virtualMachines[ processor.getPlr() ] = window;
         VirtualMachineController vmc = new VirtualMachineController( window, vm );
         vmId++;
         vmId %= 2;
@@ -39,7 +39,7 @@ public class RM {
             while ( !foundEmpty && i < ( MEMORY_SIZE / Memory.BLOCK_SIZE ) ) {
                 if ( ! memory.getBlockUsed( i ) ) {
                     foundEmpty = true;
-                    memory.setMemory( processor.getPTR() * Memory.BLOCK_SIZE + j, i.toString() );
+                    memory.setMemory( processor.getPlr() * Memory.BLOCK_SIZE + j, i.toString() );
                     memory.setBlockUsed( i, true );
                 }
                 i++;
@@ -58,7 +58,7 @@ public class RM {
         processor.setPTR( vmId );
         allocateMemory();
         for ( int i = 0; i < Memory.BLOCK_SIZE; i++ ) {
-            int dec = Integer.parseInt( memory.getMemory( processor.getPTR() * 10 + i ) );
+            int dec = Integer.parseInt( memory.getMemory( processor.getPlr() * 10 + i ) );
             for ( int j = 0; j < Memory.BLOCK_SIZE; j++ ) {
                 memory.setMemory( 10 * dec + j, externalMemory.getMemory( 10 * i + j ) );
             }
@@ -70,20 +70,20 @@ public class RM {
     }
     
     public VMView getActiveVM () {
-        return this.virtualMachines[ processor.getPTR() ];
+        return this.virtualMachines[ processor.getPlr() ];
     }
     
     public void destroyActiveVM () {
         //freeing up memory
         for ( int i = 0; i < Memory.BLOCK_SIZE; i++ ) {
-            int dec = Integer.parseInt( memory.getMemory( processor.getPTR() * 10 + i ) );
+            int dec = Integer.parseInt( memory.getMemory( processor.getPlr() * 10 + i ) );
                 memory.setBlockUsed( dec, false );
         }
-        this.virtualMachines[ processor.getPTR() ] = null;
+        this.virtualMachines[ processor.getPlr() ] = null;
     };
     
     public boolean hasActiveVM () {
-        return this.virtualMachines[ processor.getPTR() ] == null;
+        return this.virtualMachines[ processor.getPlr() ] == null;
     }
     
     /**
