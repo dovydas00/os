@@ -7,7 +7,7 @@ public class Memory {
     static String FILL_SYMBOL = "";
     
     private String[][] memory;
-    private boolean[] blockUsed = new boolean[ RealMachine.MEMORY_SIZE / BLOCK_SIZE ];
+    private boolean[] blockUsed = new boolean[ RM.MEMORY_SIZE / BLOCK_SIZE ];
     public int length;
     
     public Memory( int size ) {
