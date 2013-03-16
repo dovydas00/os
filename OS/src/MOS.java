@@ -16,7 +16,7 @@ public class MOS {
        
        boolean debug = false;
        Reader reader = new Reader();
-       reader.setFile( "C:\\Users\\Lukas\\Dropbox\\OS\\Modelis\\Program_2.txt" );
+       reader.setFile( "C:\\Users\\Dovydas\\Documents\\svnOS\\trunk\\OS\\Program_1.txt" );
        reader.parseFile();
        
        if ( debug ) {
