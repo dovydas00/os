@@ -33,7 +33,7 @@ public class Main {
        RM rm = new RM();
       // rm.loadProgram( memory );
        RMView rmWindow = new RMView( rm );
-      // RealMachineController listener = new RealMachineController( rmWindow, rm );
+       RMController listener = new RMController( rmWindow, rm );
        
        try {
           // machine.interpretProgram();
