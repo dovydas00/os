@@ -1,11 +1,12 @@
+package mos;
 
 import java.io.*;
 import java.util.regex.Pattern;
 
 /**
- * KlasÄ—, imituojanti iÅ¡orinÄ¯ nuskaitymo Ä¯renginÄ¯.
+ * Klasė, imituojanti išorinį nuskaitymo įrenginį.
  * 
- * @author SaulÄ—, Antanas, Paulius,
+ * @author Saulė, Antanas, Paulius,
  */
 
 public class Reader {
@@ -15,18 +16,18 @@ public class Reader {
     private int n;
     
     /**
-     * TuÅ¡Ä�ias konstruktorius.
+     * Tuščias konstruktorius.
      */
     
     Reader() {      
     }
     
     /**
-     * Konstruktorius, priskiriantis failo pavadinimÄ… ir atidarantis srautÄ… 
+     * Konstruktorius, priskiriantis failo pavadinimą ir atidarantis srautą 
      * skaitymui.
      * 
      * @param filename
-     *      Failo, iÅ¡ kurio norima skaityti, pavadinimas.
+     *      Failo, iš kurio norima skaityti, pavadinimas.
      * @throws IOException 
      *      Neradus nurodyto failo.
      */
@@ -38,7 +39,7 @@ public class Reader {
     /**
      * Priskiriamas naujas failas ir atidaromas skaitymo srautas.
      * @param filename
-     *      Failo, iÅ¡ kurio norima skaityti, pavadinimas.
+     *      Failo, iš kurio norima skaityti, pavadinimas.
      * @throws IOException 
      *      Neradus nurodyto failo.
      */
@@ -50,10 +51,10 @@ public class Reader {
     }
     
     /**
-     * Nuskaito, apdoroja ir suraÅ¡o Ä¯ masyvÄ… nustatyto failo eilutes.
+     * Nuskaito, apdoroja ir surašo į masyvą nustatyto failo eilutes.
      * 
      * @throws IOException 
-     *      Kilus klaidoms Ä¯vesties sraute.
+     *      Kilus klaidoms įvesties sraute.
      */
     
     public void parseFile() throws IOException {
@@ -77,10 +78,10 @@ public class Reader {
     }
     
     /**
-     * Apdorojamos kodo segmento eilutÄ— ir Ä¯raÅ¡oma Ä¯ masyvÄ….
+     * Apdorojamos kodo segmento eilutė ir įrašoma į masyvą.
      * 
      * @param codeLine
-     *      Kodo segmento eilutÄ—.
+     *      Kodo segmento eilutė.
      */
     
     private void parseCodeSegment ( String codeLine ) {
@@ -89,10 +90,10 @@ public class Reader {
     }
     
     /**
-     * Apdorojama duomenÅ³ segmento eilutÄ— ir Ä¯raÅ¡oma Ä¯ masyvÄ….
+     * Apdorojama duomenų segmento eilutė ir įrašoma į masyvą.
      * 
      * @param dataLine 
-     *      DuomenÅ³ segmento eilutÄ—.
+     *      Duomenų segmento eilutė.
      */
     
     private void parseDataSegment( String dataLine ) {
@@ -124,10 +125,10 @@ public class Reader {
     }
     
     /**
-     * GrÄ…Å¾inamas duomenÅ³ masyvas.
+     * Grąžinamas duomenų masyvas.
      * 
      * @return 
-     *      DuomenÅ³ masyvas.
+     *      Duomenų masyvas.
      */
     
     public Memory getDataArray() {
@@ -135,7 +136,7 @@ public class Reader {
     }
     
     /**
-     * DuomenÅ³ masyvas iÅ¡vedamas Ä¯ standartinÄ™ iÅ¡vestÄ¯. Naudojama diagnostikai.
+     * Duomenų masyvas išvedamas į standartinę išvestį. Naudojama diagnostikai.
      */
     
     public void printDataArray() {       

@@ -1,11 +1,11 @@
-
+package mos;
 
 /**
- * KlasÄ—, emuliuojanti procesoriaus darbÄ….
+ * Klasė, emuliuojanti procesoriaus darbą.
  *
- * @author Paulius, SaulÄ—, Antanas
+ * @author Paulius, Saulė, Antanas
  */
-//yuju
+
 public class Processor {
     private Memory memory;
     private int[] PTR = { 0, 0, 0, 0 };
@@ -23,7 +23,7 @@ public class Processor {
      * Konstruktorius.
      *
      * @param memory
-     *      Realios maÅ¡inos atmintis.
+     *      Realios mašinos atmintis.
      */
 
     Processor ( Memory memory ) {
@@ -31,10 +31,10 @@ public class Processor {
     }
 
     /**
-     * GrÄ…Å¾inama IC registro reikÅ¡mÄ—.
+     * Grąžinama IC registro reikšmė.
      *
      * @return
-     *      IC registro reikÅ¡mÄ—.
+     *      IC registro reikšmė.
      */
 
     public Integer getIC () {
@@ -42,10 +42,10 @@ public class Processor {
     }
 
     /**
-     * Nustatoma IC registro reikÅ¡mÄ—.
+     * Nustatoma IC registro reikšmė.
      *
      * @param value
-     *      ReikÅ¡mÄ—, suteikiama IC registrui.
+     *      Reikšmė, suteikiama IC registrui.
      */
 
     public void setIC ( int value ) {
@@ -53,7 +53,7 @@ public class Processor {
     }
 
     /**
-     * IC reikÅ¡mÄ— padidinama vienetu.
+     * IC reikšmė padidinama vienetu.
      */
 
     public void incIC () {
@@ -61,7 +61,7 @@ public class Processor {
     }
 
     /**
-     * GrÄ…Å¾ina komandÄ…, nurodytÄ… IC registru.
+     * Grąžina komandą, nurodytą IC registru.
      *
      * @return
      *      Komanda.
@@ -72,10 +72,10 @@ public class Processor {
     }
 
     /**
-     * Nustatoma PTR registro reikÅ¡mÄ—.
+     * Nustatoma PTR registro reikšmė.
      *
      * @param value
-     *      ReikÅ¡mÄ—, kuriÄ… norima nustatyti.
+     *      Reikšmė, kurią norima nustatyti.
      */
 
     public void setPTR( int value ) {
@@ -88,10 +88,10 @@ public class Processor {
     }
 
     /**
-     * GrÄ…Å¾inama PTR registro reikÅ¡mÄ— skaitiniu formatu.
+     * Grąžinama PTR registro reikšmė skaitiniu formatu.
      *
      * @return
-     *      PTR registro reikÅ¡mÄ—.
+     *      PTR registro reikšmė.
      */
 
     public Integer getPTR () {
@@ -99,12 +99,12 @@ public class Processor {
     }
 
     /**
-     * Pagal virtualÅ³ adresÄ… sufomuojamas realus adresas.
+     * Pagal virtualų adresą sufomuojamas realus adresas.
      *
      * @param virtualAddress
-     *      Virtualios maÅ¡inos atminties adresas.
+     *      Virtualios mašinos atminties adresas.
      * @return
-     *      Realios maÅ¡inos atminties adresas.
+     *      Realios mašinos atminties adresas.
      */
 
     public int page ( int virtualAddress ) {
@@ -175,15 +175,15 @@ public class Processor {
     }
 
 //------------------------------------------------------------------------------
-// Å½emiau Å¡ios linijos uÅ¾raÅ¡yti metodai skirti procesoriaus komandÅ³ emuliacijai.
+// Žemiau šios linijos užrašyti metodai skirti procesoriaus komandų emuliacijai.
 //------------------------------------------------------------------------------
 
     /**
-     * Ä® registrÄ… R kopijuojamas atminties lÄ…stelÄ—s,
+     * Į registrą R kopijuojamas atminties ląstelės,
      * kurios adresas x*10 + y, turinys.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void loadRegister ( int xy ) {
@@ -191,11 +191,11 @@ public class Processor {
     }
 
     /**
-     * Ä® atminties lÄ…stelÄ™, kurios adresas x*10 + y,
-     * Ä¯raÅ¡oma registro R reikÅ¡mÄ—.
+     * Į atminties ląstelę, kurios adresas x*10 + y,
+     * įrašoma registro R reikšmė.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void storeRegister ( int xy ) {
@@ -203,7 +203,7 @@ public class Processor {
     }
 
     /**
-     * PakeiÄ�ia dabartinÄ¯ registro numerÄ¯ Ä¯ kitÄ….
+     * Pakeičia dabartinį registro numerį į kitą.
      */
 
     public void changeRN () {
@@ -215,11 +215,11 @@ public class Processor {
     }
 
     /**
-     * Prie registro R reikÅ¡mÄ—s pridedama atminties lÄ…stelÄ—s,
-     * kurios adresas x*10 + y reikÅ¡mÄ—.
+     * Prie registro R reikšmės pridedama atminties ląstelės,
+     * kurios adresas x*10 + y reikšmė.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void addToRegister ( int xy ) {
@@ -234,11 +234,11 @@ public class Processor {
     }
 
     /**
-     * IÅ¡ registro R reikÅ¡mÄ—s atimama atminties lÄ…stelÄ—s,
-     * kurios adresas x*10 + y reikÅ¡mÄ—.
+     * Iš registro R reikšmės atimama atminties ląstelės,
+     * kurios adresas x*10 + y reikšmė.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void substractFromRegister ( int xy ) {
@@ -253,11 +253,11 @@ public class Processor {
     }
 
     /**
-     * Palyginamos registro R ir atminties lÄ…stelÄ—s, kurios adresas x*10 + y
-     * reikÅ¡mÄ—s ir pagal jas nustatomas C registras.
+     * Palyginamos registro R ir atminties ląstelės, kurios adresas x*10 + y
+     * reikšmės ir pagal jas nustatomas C registras.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void compareToRegister ( int xy ) {
@@ -266,8 +266,8 @@ public class Processor {
             int registerValue = Integer.decode( R[ RN ] );
 
             if ( debug ) {
-                System.err.println( "Lyginamos lÄ…stelÄ—s reikÅ¡mÄ—: " + memoryValue );
-                System.out.println( "Lyginamo registro reikÅ¡mÄ—: " + registerValue );
+                System.err.println( "Lyginamos ląstelės reikšmė: " + memoryValue );
+                System.out.println( "Lyginamo registro reikšmė: " + registerValue );
             }
 
             if ( memoryValue < registerValue ) {
@@ -279,7 +279,7 @@ public class Processor {
             }
 
             if ( debug ) {
-                System.err.println( "Palyginimo reikÅ¡mÄ—: " + C );
+                System.err.println( "Palyginimo reikšmė: " + C );
             }
 
         } catch ( NumberFormatException e ) {
@@ -288,11 +288,11 @@ public class Processor {
     }
 
     /**
-     * Jei registro C reikÅ¡mÄ— lygi â€ž1â€œ, tai registrui IC
-     * priskiriama reikÅ¡mÄ— [x*10 + y].
+     * Jei registro C reikšmė lygi „1“, tai registrui IC
+     * priskiriama reikšmė [x*10 + y].
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void jumpIfGreater ( int xy ) {
@@ -304,11 +304,11 @@ public class Processor {
     }
 
     /**
-     * Jei registro C reikÅ¡mÄ— lygi â€ž0â€œ, tai registrui IC
-     * priskiriama reikÅ¡mÄ— [x*10 + y].
+     * Jei registro C reikšmė lygi „0“, tai registrui IC
+     * priskiriama reikšmė [x*10 + y].
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void jumpIfEqual ( int xy ) {
@@ -320,11 +320,11 @@ public class Processor {
     }
 
     /**
-     * Jei registro C reikÅ¡mÄ— lygi â€ž-1â€œ, tai registrui IC
-     * priskiriama reikÅ¡mÄ— [x*10 + y].
+     * Jei registro C reikšmė lygi „-1“, tai registrui IC
+     * priskiriama reikšmė [x*10 + y].
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void jumpIfLess ( int xy ) {
@@ -336,11 +336,11 @@ public class Processor {
     }
 
     /**
-     * BesÄ…lyginis valdymo perdavimas.
-     * Registrui IC priskiriama reikÅ¡mÄ— [x*10 + y].
+     * Besąlyginis valdymo perdavimas.
+     * Registrui IC priskiriama reikšmė [x*10 + y].
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void jump ( int xy ) {
@@ -348,10 +348,10 @@ public class Processor {
     }
 
     /**
-     * IÅ¡ Ä¯vedimo srauto perskaitomas 1 Å¾odis ir Ä¯raÅ¡omas Ä¯ lÄ…stelÄ™ adresu xy.
+     * Iš įvedimo srauto perskaitomas 1 žodis ir įrašomas į ląstelę adresu xy.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void getWord ( int xy ) {
@@ -365,11 +365,11 @@ public class Processor {
     }
     
     /**
-     * IÅ¡ Ä¯vedimo srauto perskaito 10 Å¾odÅ¾iÅ³ ir Ä¯raÅ¡o juos
-     * Ä¯ lÄ…steles [x *10 + i], kur i = 0.. 9. Operandas y reikÅ¡mÄ—s neturi.
+     * Iš įvedimo srauto perskaito 10 žodžių ir įrašo juos
+     * į ląsteles [x *10 + i], kur i = 0.. 9. Operandas y reikšmės neturi.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void getData ( int xy ) {
@@ -380,10 +380,10 @@ public class Processor {
     }
 
     /**
-     * IÅ¡siunÄ�ia iÅ¡vedimui Å¾odÄ¯, kurio adreasas [x *10 + y ].
+     * Išsiunčia išvedimui žodį, kurio adreasas [x *10 + y ].
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
 
     public void printWord ( int xy ) {
@@ -395,11 +395,11 @@ public class Processor {
     }
 
     /**
-     * IÅ¡siunÄ�ia iÅ¡vedimui Å¾odÅ¾iÅ³ srautÄ… prasidedanti lÄ…stele [x*10 + y]
-     * ir pasibaigiantÄ¯ sutikus specialÅ³ simbolÄ¯ EOF$.
+     * Išsiunčia išvedimui žodžių srautą prasidedanti ląstele [x*10 + y]
+     * ir pasibaigiantį sutikus specialų simbolį EOF$.
      *
      * @param xy
-     *      Atminties lÄ…stelÄ—s adresas.
+     *      Atminties ląstelės adresas.
      */
     
     public void printString ( int xy ) {

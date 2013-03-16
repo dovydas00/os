@@ -1,10 +1,12 @@
+package mos;
 
-
+import GUI.RealMachineView;
+import GUI.RealMachineController;
 import java.io.IOException;
 
 /**
  *
- * @author Antanas, Paulius, SaulÄ—
+ * @author Antanas, Paulius, Saulė
  */
 public class MOS {
 
@@ -16,7 +18,7 @@ public class MOS {
        
        boolean debug = false;
        Reader reader = new Reader();
-       reader.setFile( "C:\\Users\\Dovydas\\Documents\\svnOS\\trunk\\OS\\Program_1.txt" );
+       reader.setFile( "C:\\Users\\Antanas\\Desktop\\Program_2.txt" );
        reader.parseFile();
        
        if ( debug ) {
@@ -32,7 +34,7 @@ public class MOS {
        try {
           // machine.interpretProgram();
        } catch ( NumberFormatException e )  {
-            System.out.println("Klaidingai Ä¯vestas skaiÄ�ius");
+            System.out.println("Klaidingai įvestas skaičius");
         }
     }
 }
