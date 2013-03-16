@@ -225,4 +225,9 @@ public class Processor {
 	public static void reloadRegister() {
 		//is++;
 	}
+	
+	//gauti komanda nurodyta registru
+	public static void getCommand() {
+		//return
+	}
 }
