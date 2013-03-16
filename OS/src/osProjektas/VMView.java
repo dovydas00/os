@@ -90,7 +90,7 @@ public class VMView extends JFrame{
             }
         }
         
-        renderer.setIC( machine.processor.getIC() );
+        renderer.setIs( machine.processor.getIs() );
         table.setEnabled( false );
     }
     
@@ -124,7 +124,7 @@ public class VMView extends JFrame{
         
         JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
         
-        for ( int j = 0; j < RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
+        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
             JLabel rowLabel = new JLabel( Integer.toString( j ) );
             rowLabel.setOpaque( true );
             rowLabel.setHorizontalAlignment( JLabel.CENTER );
