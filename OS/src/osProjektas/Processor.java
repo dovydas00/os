@@ -21,7 +21,15 @@ public class Processor {
 	static int[] k4 = { 0 };
 	static int[] lk = { 9 };
 
-	public static int[] getR1() {
+	
+	
+	
+	
+	public static void priskirtiRegistruiReikšmę(int [] registras){
+	
+	}
+	
+	public static int[] r1() {
 		return r1;
 	}
 
@@ -29,9 +37,7 @@ public class Processor {
 		Processor.r1 = r1;
 	}
 
-	public static int[] getR2() {
-		return r2;
-	}
+
 
 	public static void setR2(int[] r2) {
 		Processor.r2 = r2;

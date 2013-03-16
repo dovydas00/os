@@ -11,12 +11,14 @@ public class Memory {
    
     public static void checkIfFree(int block){
     	
-    	for (int i=0; i<15; i++){
+    	for (int i=0; i<16; i++){
     		System.out.println(i);
     	}
     	
     	
     }
+    
+    
     
     public static String[][] getMemory() {
 		return memory;

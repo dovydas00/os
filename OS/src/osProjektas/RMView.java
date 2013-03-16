@@ -27,7 +27,7 @@ public class RMView extends JFrame {
     JButton executeButton = new JButton( "Kita komanda" );
     JButton fileLoadButton = new JButton( "Pasirinkti failą" );
     private int registerWidth = 3;
-    private CustomTableCellRenderer renderer;
+   // private CustomTableCellRenderer renderer;
     private RegisterTextField cx = new RegisterTextField( registerWidth, "cx" );
     private RegisterTextField is = new RegisterTextField( registerWidth, "is" );
     private RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
@@ -56,7 +56,7 @@ public class RMView extends JFrame {
     public RMView( RM RM ){
         this.setResizable( false );
         this.setLocation( 5, 5 );
-        this.RM = RM;
+        //this.RM = RM;
         
         setSize( 800, 690 ); 
         setTitle( "Reali mašina" );
@@ -191,11 +191,11 @@ public class RMView extends JFrame {
     */
     
     public final void update() {
-        setRegisters();
+ //       setRegisters();
         fillTable();
     }
     
-    private void setRegisters() {
+  /*  private void setRegisters() {
         sv.setText( RM.processor.getSI().toString() );
         pp.setText( RM.processor.getPI().toString() );
         ap.setText( RM.processor.getTI().toString() );           
@@ -215,7 +215,7 @@ public class RMView extends JFrame {
         sp.setText( RM.processor.getMode().toString() ); 
         
     }
-    
+    */
     /**
      * Užpildo interfeiso lentelę virtualios mašinos atminties masyvo duomenimis.
      */
@@ -223,19 +223,19 @@ public class RMView extends JFrame {
     public void fillTable() {
         for( int i = 0; i <  RM.MEMORY_SIZE / Memory.BLOCK_SIZE ; i++ ){
             for( int j = 0; j <  Memory.BLOCK_SIZE; j++ ){
-                this.table.setValueAt( RM.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
+      //          this.table.setValueAt( RM.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
             }
         }
         
-        renderer.setIC( RM.processor.page( RM.processor.getIC() ) );
+     //   renderer.setIC( RM.processor.page( RM.processor.getIC() ) );
         table.setEnabled( false );
     }
     
     private JPanel getTablePanel(){
         table.setCellSelectionEnabled( false );
         table.setEnabled( false );
-        renderer = new CustomTableCellRenderer();
-        table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
+   //     renderer = new CustomTableCellRenderer();
+       // table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
         
         JTableHeader columnHeader = table.getTableHeader();
         columnHeader.setResizingAllowed( false );
