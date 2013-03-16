@@ -5,7 +5,7 @@
  *
  * @author Paulius, SaulÄ—, Antanas
  */
-
+//yuju
 public class Processor {
     private Memory memory;
     private int[] PTR = { 0, 0, 0, 0 };
