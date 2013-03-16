@@ -1,7 +1,5 @@
-package mos;
 
-import GUI.VirtualMachineController;
-import GUI.VirtualMachineView;
+
 
 /**
  * Realios mašinos veikimą emuliuojanti klasė.

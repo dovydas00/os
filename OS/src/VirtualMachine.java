@@ -1,4 +1,4 @@
-package mos;
+
 
 /**
  * Klasė, emuliuojanti virtualios mašinos darbą.

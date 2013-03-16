@@ -10,6 +10,7 @@ public class Main {
     	for (int i=0; i<10;i++){
     		Processor.is = i;
     		Memory.push();
+    		
     		//Memory.memory[Memory.blocks-1][i] = i + "";
     	}
     //	Memory.assignStackToMemory(); // Nustato stekui atminties vietas

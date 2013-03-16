@@ -1,4 +1,3 @@
-package mos;
 
 /**
  * Klasė, emuliuojanti procesoriaus darbą.

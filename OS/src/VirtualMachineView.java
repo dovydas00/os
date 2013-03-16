@@ -1,4 +1,4 @@
-package GUI;
+
 
 /**
  *
@@ -9,12 +9,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
-import mos.Memory;
-import mos.Processor;
-import mos.RealMachine;
-import mos.VirtualMachine;
 
 public class VirtualMachineView extends JFrame {
     

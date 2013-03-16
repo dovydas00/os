@@ -1,4 +1,4 @@
-package GUI;
+
 
 /**
  *
@@ -12,8 +12,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
-import mos.Memory;
-import mos.RealMachine;
 
 public class RealMachineView extends JFrame {
     

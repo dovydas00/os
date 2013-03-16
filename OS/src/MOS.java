@@ -1,7 +1,6 @@
-package mos;
 
-import GUI.RealMachineView;
-import GUI.RealMachineController;
+
+
 import java.io.IOException;
 
 /**
@@ -18,7 +17,7 @@ public class MOS {
        
        boolean debug = false;
        Reader reader = new Reader();
-       reader.setFile( "C:\\Users\\Antanas\\Desktop\\Program_2.txt" );
+       reader.setFile( "C:\\Users\\Dovydas\\Documents\\SVN OS\\trunk\\OS\\Program_2.txt" );
        reader.parseFile();
        
        if ( debug ) {
