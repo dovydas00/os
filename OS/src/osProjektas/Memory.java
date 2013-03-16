@@ -2,47 +2,34 @@ package osProjektas;
 
 public class Memory {
 
-    static public int BLOCK_SIZE = 16;
-    static int CELL_SIZE = 4;
-    static String FILL_SYMBOL = "";
+    static public int BLOCK_SIZE = 16; // Bloką sudaro 16 žodžių
+    static int CELL_SIZE = 4; //Žodį sudaro 4 baitai
+    static String FILL_SYMBOL = ""; //užpido atminti tuščiu stringu
     
-    private String[][] memory;
-    private boolean[] blockUsed = new boolean[ RM.MEMORY_SIZE / BLOCK_SIZE ];
-    public int length;
-    
-    public Memory( int size ) {
-        this.length = size;
-        memory = new String[ size / BLOCK_SIZE ][ BLOCK_SIZE ];
-        for ( int i = 0; i < size / BLOCK_SIZE; i++ ) {
-            blockUsed[ i ] = false;
-            for ( int j = 0; j < BLOCK_SIZE; j ++ ) {
-                memory[ i ][ j ] = FILL_SYMBOL;
-            }
-        }
-    }
-    
-    public String getMemory( int position ) {
-        return memory[ position / BLOCK_SIZE ][ position % BLOCK_SIZE ];
-    }
-    
-    public void setMemory( int position, String content ) {
-        if ( content.length() > CELL_SIZE ) {
-            content = content.substring( 0, CELL_SIZE );
-        }
-        
-        this.memory[ position / BLOCK_SIZE ][ position % BLOCK_SIZE ] = content;
-    }
 
-    public boolean getBlockUsed( int position ) {
-        return blockUsed[ position ];
+    
+   
+    public static void checkIfFree(int block){
+    	
+    	for (int i=0; i<15; i++){
+    		System.out.println(i);
+    	}
+    	
+    	
     }
     
-    public void setBlockUsed( int position, boolean value ) {
-        this.blockUsed[ position ] = value;
-    }
+    public static String[][] getMemory() {
+		return memory;
+	}
+
+
+	public static void setMemory(String[][] memory) {
+		Memory.memory = memory;
+	}
+
+
+	private static String[][] memory = new String[4095][16]; //atmintis tai dvimatis masyvas
+   
     
-    public String[][] getMemoryArray () {
-        return this.memory;
-    }
 
 }
