@@ -72,7 +72,7 @@ public class Processor {
 
 	public static void interpretCommand() {
 
-		switch (getCommand()){
+		switch (getCommand().substring(0, 1)){
 		case "testas": test();
 		}
 		
@@ -154,12 +154,16 @@ public class Processor {
 	}
 
 	public static void back() {
+		
+		pop();
 		//
 	}
 
 
 
 	public static void loop() {
+		
+		
 		//
 	}
 

@@ -24,7 +24,7 @@ public class Main {
     	Memory.memory[0][0] = "testas";
     	Processor.is=0;
     	Processor.interpretCommand();
-       
+    	
        boolean debug = false;
        Reader reader = new Reader();
        //reader.setFile( "C:\\Users\\Lukas\\Desktop\\OS\\os.git\\trunk\\OS" );
