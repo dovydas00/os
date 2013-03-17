@@ -129,6 +129,7 @@ public class Processor {
 	}
 
 	public static void JMP(int x, int y) {
+		push();
 		is = x * 10 + y;
 	}
 
@@ -156,13 +157,7 @@ public class Processor {
 		//
 	}
 
-	public static void push() {
-		//
-	}
 
-	public static void pops() {
-		//
-	}
 
 	public static void loop() {
 		//
@@ -245,5 +240,32 @@ public class Processor {
 	public static String getCommand() {
 
 		return Memory.getMemoryAtIs();
+	}
+	public static void assignStackToMemory() {
+
+		Memory.stack = Memory.memory[Memory.blocks - 1];
+		//Processor.sv= 9;
+		
+	}
+	public static void push() {
+		if (Memory.stack == null){
+			assignStackToMemory();
+		}
+		
+		Memory.stack[Processor.sv] = Processor.is.toString();
+		Processor.sv++;
+		//Processor.sv = stack.length;
+	}
+
+	public static void pop() {
+		Processor.sv--;
+		Processor.is = Integer.parseInt(Memory.stack[Processor.sv]);
+		Memory.stack[Processor.sv] = "";
+		
+		// Memory.stack[Processor.sv] = "0";
+
+	}
+	public static void createMemory() {
+		Memory.memory = new String[Memory.blocks][10];
 	}
 }

@@ -23,7 +23,7 @@ public class RMController {
         rmView.executeButton.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed( ActionEvent event ){
-                //rm.getActiveVM().machine.interpretCommand();
+              //  rm.getActiveVM().machine.interpretCommand();
                 update();
                 
                /* if( rm.processor.getPI() != 0 ) {

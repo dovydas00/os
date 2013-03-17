@@ -6,7 +6,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException{
-    	Memory.createMemory();
+    	Processor.createMemory();
     
     	/*for (int i=0; i<10;i++){
     		Processor.is = i;
