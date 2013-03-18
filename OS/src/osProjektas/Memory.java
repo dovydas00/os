@@ -7,9 +7,7 @@ public class Memory {
 	static int CELL_SIZE = 4; // Žodį sudaro 4 baitai
 	static String FILL_SYMBOL = ""; // užpido atminti tuščiu stringu
 	public static String[][] memory; // atmintis tai
-	public static String stack[]; // vienamtis
-
-	// masyvas
+	public static String stack[]; // stekui išskiriame vieną bloką atminties 
 
 	public static void checkIfFree(int block) {
 

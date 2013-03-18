@@ -71,13 +71,16 @@ public class Processor {
 	}
 
 	public static void interpretCommand() {
-
-		switch (getCommand().substring(0, 1)){
-		case "testas": test();
+		switch (getCommand().substring(0, 2)) {
+		case "AD": {
+			push();
+			is = Integer.parseInt(getCommand().substring(2,4));
+			r1 = r1+ Integer.parseInt(Memory.getMemoryAtIs());
+			pop();
+			is++;
 		}
-		
-		
-		
+		}
+
 	}
 
 	/**
@@ -154,16 +157,13 @@ public class Processor {
 	}
 
 	public static void back() {
-		
+
 		pop();
 		//
 	}
 
-
-
 	public static void loop() {
-		
-		
+
 		//
 	}
 
@@ -245,30 +245,33 @@ public class Processor {
 
 		return Memory.getMemoryAtIs();
 	}
+
 	public static void assignStackToMemory() {
 
 		Memory.stack = Memory.memory[Memory.blocks - 1];
-		//Processor.sv= 9;
-		
+		// Processor.sv= 9;
+
 	}
+
 	public static void push() {
-		if (Memory.stack == null){
+		if (Memory.stack == null) {
 			assignStackToMemory();
 		}
-		
+
 		Memory.stack[Processor.sv] = Processor.is.toString();
 		Processor.sv++;
-		//Processor.sv = stack.length;
+		// Processor.sv = stack.length;
 	}
 
 	public static void pop() {
 		Processor.sv--;
 		Processor.is = Integer.parseInt(Memory.stack[Processor.sv]);
 		Memory.stack[Processor.sv] = "";
-		
+
 		// Memory.stack[Processor.sv] = "0";
 
 	}
+
 	public static void createMemory() {
 		Memory.memory = new String[Memory.blocks][10];
 	}

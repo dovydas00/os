@@ -21,9 +21,13 @@ public class Main {
     		System.out.println(Processor.is);
     	}
     	*/
-    	Memory.memory[0][0] = "testas";
+    	Memory.memory[0][0] = "AD09";
+    	Memory.memory[0][1] = "AD09";
+    	Memory.memory[0][9] = "900";
     	Processor.is=0;
     	Processor.interpretCommand();
+    	Processor.interpretCommand();
+    	System.out.println(Processor.r1);
     	
        boolean debug = false;
        Reader reader = new Reader();
