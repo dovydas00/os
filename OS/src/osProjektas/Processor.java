@@ -193,63 +193,75 @@ public class Processor {
 		pr = Integer.parseInt(Memory.getMemoryAtIs());
 	}
 
-	public static void assignPlr() {
+	public static void assignPlr(int value) {
 		// is++;
-		plr = Integer.parseInt(Memory.getMemoryAtIs());
+		//plr = Integer.parseInt(Memory.getMemoryAtIs());
+		plr = value;
 	}
 
-	public static void assignBus() {
+	public static void assignBus(int value) {
 		// is++;
-		bus = Integer.parseInt(Memory.getMemoryAtIs());
+		//bus = Integer.parseInt(Memory.getMemoryAtIs());
+		bus = value;
 	}
 
-	public static void assignSv() {
+	public static void assignSv(int value) {
 		// is++;
-		sv = Integer.parseInt(Memory.getMemoryAtIs());
+		//sv = Integer.parseInt(Memory.getMemoryAtIs());
+		sv = value;
 	}
 
-	public static void assignPp() {
+	public static void assignPp(int value) {
 		// is++;
-		pp = Integer.parseInt(Memory.getMemoryAtIs());
+		//pp = Integer.parseInt(Memory.getMemoryAtIs());
+		pp = value;
 	}
 
-	public static void assignAp() {
+	public static void assignAp(int value) {
 		// is++;
-		ap = Integer.parseInt(Memory.getMemoryAtIs());
+		//ap = Integer.parseInt(Memory.getMemoryAtIs());
+		ap = value;
 	}
 
-	public static void assignK1() {
+	public static void assignK1(int value) {
 		// is++;
-		k1 = Integer.parseInt(Memory.getMemoryAtIs());
+		//k1 = Integer.parseInt(Memory.getMemoryAtIs());
+		k1 = value;
 	}
 
-	public static void assignK2() {
+	public static void assignK2(int value) {
 		// is++;
-		k2 = Integer.parseInt(Memory.getMemoryAtIs());
+		//k2 = Integer.parseInt(Memory.getMemoryAtIs());
+		k2 = value;
 	}
 
-	public static void assignK3() {
+	public static void assignK3(int value) {
 		// is++;
-		k3 = Integer.parseInt(Memory.getMemoryAtIs());
+		//k3 = Integer.parseInt(Memory.getMemoryAtIs());
+		k3 = value;
 	}
 
-	public static void assignK4() {
+	public static void assignK4(int value) {
 		// is++;
-		k4 = Integer.parseInt(Memory.getMemoryAtIs());
+		//k4 = Integer.parseInt(Memory.getMemoryAtIs());
+		k4 = value;
 	}
 
-	public static void assignLk() {
+	public static void assignLk(int value) {
 		// is++;
-		lk = Integer.parseInt(Memory.getMemoryAtIs());
+		//lk = Integer.parseInt(Memory.getMemoryAtIs());
+		lk = value;
 	}
 
-	public static void assignSp() {
+	public static void assignSp(int value) {
 		// is++;
 		sp = Integer.parseInt(Memory.getMemoryAtIs());
+		sp = value;
 	}
 
-	public static void reloadRegister() {
+	public static int reloadRegister(int x) {
 		// is++;
+		return x;
 	}
 
 	// gauti komanda nurodyta registru
