@@ -2,6 +2,7 @@ package osProjektas;
 
 public class Memory {
 
+	static public int[][] buffer; 
 	static public int blocks = 1000;
 	static public int blockSize = 10; // Bloką sudaro 16 žodžių
 	static int CELL_SIZE = 4; // Žodį sudaro 4 baitai
@@ -16,8 +17,7 @@ public class Memory {
 		}
 	}
 
-
-
+	
 	public static String getMemoryAtIs() {
 
 		return (memory[~~(Processor.is / 10)][Processor.is % 10]);

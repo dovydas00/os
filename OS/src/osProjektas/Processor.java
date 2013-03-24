@@ -1,5 +1,7 @@
 package osProjektas;
 
+import java.nio.Buffer;
+
 public class Processor {
 	// Pagrindiniai registrai
 	static Integer r1 = 0;
@@ -145,7 +147,8 @@ public class Processor {
 		//
 	}
 
-	public static void getMemoryBlock() {
+	public static void getMemoryBlock() { //GD
+		
 		//
 	}
 
@@ -167,9 +170,13 @@ public class Processor {
 		//
 	}
 
-	public static void loop() {
-
-		//
+	public static void loop(int cx) {
+		if (cx > 0){
+			push();
+			interpretCommand();
+			pop();
+			loop(cx-1);
+		}
 	}
 
 	public static void assign() {
@@ -278,6 +285,10 @@ public class Processor {
 	}
 
 	public static void createMemory() {
-		Memory.memory = new String[Memory.blocks][10];
+		Memory.memory = new String[Memory.blocks][Memory.blockSize];
+	}
+	
+	public static void createBuffer(){
+		Memory.buffer = new int[Memory.blockSize][Memory.CELL_SIZE];
 	}
 }

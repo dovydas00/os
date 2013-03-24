@@ -26,6 +26,8 @@ public class Main {
     	Memory.memory[0][9] = "900";
     	Processor.is=0;
     	Processor.interpretCommand();
+    	
+    	Processor.loop(3);
     	Processor.interpretCommand();
     	System.out.println(Processor.r1);
     	
