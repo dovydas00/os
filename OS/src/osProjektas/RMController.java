@@ -26,37 +26,33 @@ public class RMController {
               //  rm.getActiveVM().machine.interpretCommand();
                 update();
                 
-               /* if( rm.processor.getPI() != 0 ) {
-                    if( rm.processor.getPI() == 1 ) {
+                if( Processor.pp != 0 ) {
+                    if( Processor.pp == 1 ) {
                         rmView.errorField.append( "Neteisingas adresas.\n" );
-                    } else if ( rm.processor.getPI() == 2 ) {
-                        rmView.errorField.append( "Neatpažinta komanda.\n" );
-                    } else if ( rm.processor.getPI() == 3 ) {
+                    } else if ( Processor.pp == 2 ) {
+                        rmView.errorField.append( "Neegzistuojantis operacijos kodas\n" );
+                    } else if ( Processor.pp == 3 ) {
                          rmView.errorField.append( "Neskaitinė atminties " + 
                                                   "ląstelės reikšmė nurodytu " +
                                                   " adresu.\n" );
                     }
                     rmView.outputField.append( "\nPrograma baigė darbą.\n" );
-                    rm.getActiveVM().dispose();
-                    rm.destroyActiveVM();
+                    /*rm.getActiveVM().dispose();
+                    rm.destroyActiveVM();*/
                     rmView.executeButton.setEnabled( false );
                 } else {
-                    if ( rm.processor.getSI() == 1 ) {
+                    if ( Processor.sp == 1 ) {     //Pertraukima issaukia GD komanda
                         rmView.inputField.setEnabled( true );
                         rmView.inputField.requestFocusInWindow();
                         rmView.reloadButton.setEnabled( false );
                         rmView.executeButton.setEnabled( false );
                         rmView.table.setEnabled( false );
-                    } else if ( rm.processor.getSI() == 2 ) {
-                        int number = Integer.decode( rm.processor.getCommand().substring( 2 ) );
-                        rmView.outputField.append( rm.processor.getPrintString( number ) );
-                        rm.processor.incIC();
-                    }  else if ( rm.processor.getSI() == 3 ) {
+                    }  else if ( Processor.sp == 6 ) { //Pertraukima issaukia HALT komanda
                         rmView.outputField.append( "\nPrograma baigė darbą.\n" );
-                        rm.getActiveVM().dispose();
-                        rm.destroyActiveVM();
+                      /*  rm.getActiveVM().dispose();
+                        rm.destroyActiveVM();*/
                         rmView.executeButton.setEnabled( false );
-                    } else if ( rm.processor.getSI() == 4 ) {
+                    } /*else if ( rm.processor.getSI() == 4 ) {
                         int number = Integer.decode( rm.processor.getCommand().substring( 2 ) );
                         rmView.outputField.append( rm.processor.getPrintWord( number ) );
                         rm.processor.incIC();
@@ -66,7 +62,7 @@ public class RMController {
                     //rm.processor.setSI( 0 );
                     //rm.processor.setPI( 0 );
                 }
-           // }
+            }
         });
         
         rmView.reloadButton.addActionListener( new ActionListener(){
@@ -162,7 +158,7 @@ public class RMController {
                             offset = rmView.inputField.getText().length();
                             rmView.executeButton.setEnabled( true );
                             rmView.executeButton.requestFocusInWindow();
-                            //rm.processor.incIC();
+                            Processor.cx++;
                             rmView.inputField.setEnabled( false );
                             rmView.reloadButton.setEnabled( true );
                             update();
