@@ -1,6 +1,5 @@
 package osProjektas;
 
-import java.nio.Buffer;
 
 public class Processor {
 	// Pagrindiniai registrai

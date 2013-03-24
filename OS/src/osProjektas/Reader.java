@@ -11,7 +11,7 @@ public class Reader {
     
     //private Memory dataArray = new Memory( VM.MEMORY_SIZE );
     private BufferedReader reader;
-    private int n;
+   // private int n;
     
     /**
      * TuÅ¡Ä�ias konstruktorius.
@@ -58,7 +58,7 @@ public class Reader {
     public void parseFile() throws IOException {
         
         String fileLine;
-        n = 0;
+       // n = 0;
         
         while ( !reader.readLine().startsWith( "CS:" ) ){
         }
@@ -67,7 +67,7 @@ public class Reader {
            // parseCodeSegment( fileLine );
         }
     
-        n = VM.DATA_SEGMENT_START;
+        //n = VM.DATA_SEGMENT_START;
         while( ( fileLine = reader.readLine() ) != null ){
             parseDataSegment( fileLine );
         }
@@ -99,7 +99,7 @@ public class Reader {
         String subSeq;
 
         if( Pattern.matches( "^SW\\d\\d.*", dataLine ) ){
-            n = VM.DATA_SEGMENT_START + Integer.parseInt( dataLine.substring( 2, 4 ) );
+            //n = VM.DATA_SEGMENT_START + Integer.parseInt( dataLine.substring( 2, 4 ) );
             dataLine = dataLine.substring( 5 );   //SW komanda, 2 skaitmenys bei tarpo simbolis
         } else if ( dataLine.startsWith( "SW " ) ) {
             dataLine = dataLine.substring( 3 );   //SW komanda bei tarpo simbolis
@@ -112,13 +112,13 @@ public class Reader {
             subSeq = dataLine.substring( k, k + Memory.CELL_SIZE );
             k += Memory.CELL_SIZE;
             //dataArray.setMemory( n, subSeq );
-            n++;
+           // n++;
         }
         
         subSeq = dataLine.substring( residueStart );
         if ( !subSeq.equals( "" ) ) {
            // dataArray.setMemory( n, subSeq );
-            n++;
+            //n++;
         }
     }
     
