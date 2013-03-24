@@ -74,11 +74,12 @@ public class Processor {
 		switch (getCommand().substring(0, 2)) {
 		case "AD": {
 			push();
-			is = Integer.parseInt(getCommand().substring(2,4));
-			r1 = r1+ Integer.parseInt(Memory.getMemoryAtIs());
+			is = Integer.parseInt(getCommand().substring(2, 4));
+			r1 = r1 + Integer.parseInt(Memory.getMemoryAtIs());
 			pop();
 			is++;
 		}
+
 		}
 
 	}
@@ -126,9 +127,13 @@ public class Processor {
 	 * @param y
 	 */
 	// push adresas
-	public static void test() {
+	public static int test() {
 
-		System.out.println("Testas suveike");
+		if ((pp + sp + ap + k1 + k2 + k3 + k4 + lk) > 0) {
+			return 1;
+		} else
+			return 0;
+		
 	}
 
 	public static void JMP(int x, int y) {
