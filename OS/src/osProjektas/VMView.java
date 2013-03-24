@@ -3,7 +3,6 @@ package osProjektas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,7 +23,7 @@ public class VMView extends JFrame{
     JPanel mainPanel = new JPanel();
     JButton exitButton;
     int registerWidth = 3;
-    private CustomTableCellRenderer renderer;
+    private CellPaint renderer;
     
     RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
     RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
@@ -33,15 +32,15 @@ public class VMView extends JFrame{
     RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
     RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
-    JTable table = new JTable( ( VM.MEMORY_SIZE / Memory.blockSize ), 
+    JTable table = new JTable( ( VM.blocks / Memory.blockSize ), 
                               Memory.blockSize );
 	
     public VMView( VM machine ){
         setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
         setResizable( false );
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        this.setLocation( width - 550, 350 * ( machine.getID() ) );
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //int width = screenSize.width;
+        //this.setLocation( width - 550, 350 * ( machine.getID() ) );
         this.machine = machine;
         this.processor = machine.processor;
         this.setSize( new Dimension( 550, 350 ) );
@@ -84,30 +83,30 @@ public class VMView extends JFrame{
     }
     
     private void fillTable() {
-        for ( int i = 0; i < VM.MEMORY_SIZE / Memory.blockSize; i ++ ) {
+        for ( int i = 0; i < VM.blocks / Memory.blockSize; i ++ ) {
             for ( int j = 0; j < Memory.blockSize; j++ ) {
-                table.setValueAt( machine.getMemoryContent( i * Memory.blockSize + j ), i, j );
+                //table.setValueAt( machine.getMemoryContent( i * Memory.blockSize + j ), i, j );
             }
         }
         
-        renderer.setIs( machine.processor.getIs() );
+        //renderer.setIs( machine.processor.getIs() );
         table.setEnabled( false );
     }
     
     private void setRegisters() {
-    	pr.setText( processor.getPr().toString() );
+    	/*pr.setText( processor.getPr().toString() );
         is.setText( processor.getIs().toString() );
         r1.setText( processor.getR1() );
         r2.setText( processor.getR2() );
         cx.setText( processor.getCx().toString() );
-        sv.setText( processor.getSv().toString() );
+        sv.setText( processor.getSv().toString() );*/
     }
     
     private JPanel getTablePanel() {
         table.setPreferredSize( new Dimension( 500, 180 ) );
         table.setCellSelectionEnabled( false );
         table.setEnabled( false );
-        renderer = new CustomTableCellRenderer();
+        renderer = new CellPaint();
         table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
         
         JTableHeader columnHeader = table.getTableHeader();
