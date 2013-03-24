@@ -303,4 +303,6 @@ public class Processor {
 	public static void createBuffer(){
 		Memory.buffer = new int[Memory.blockSize][Memory.CELL_SIZE];
 	}
+	
+	
 }
