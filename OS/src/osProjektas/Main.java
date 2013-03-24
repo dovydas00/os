@@ -8,7 +8,11 @@ public class Main {
     public static void main(String[] args) throws IOException{
     	Processor.createMemory();
     	Memory.createPageTable();
-    	new VM(Integer.parseInt(Memory.pageTable[0]));
+    	new VM(10);
+    	VM.codeSegement[0][0]="";
+    	System.out.println(Memory.memory[10][0]);
+  
+    	
     
     	/*for (int i=0; i<10;i++){
     		Processor.is = i;

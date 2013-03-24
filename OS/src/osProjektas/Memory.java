@@ -3,7 +3,7 @@ package osProjektas;
 public class Memory {
 
 	static public int[][] buffer;
-	static public int blocks = 1000;
+	static public int blocks = 100;
 	static public int blockSize = 10; // Bloką sudaro 16 žodžių
 	static int CELL_SIZE = 4; // Žodį sudaro 4 baitai
 	static String FILL_SYMBOL = ""; // užpido atminti tuščiu stringu
@@ -24,6 +24,9 @@ public class Memory {
 	}
 
 	public static void createPageTable() {
+		if (Memory.memory == null){
+			Processor.createMemory();
+		}
 		pageTable = Memory.memory[9];
 		pageTable[0] = "10";
 		pageTable[1] = "19";

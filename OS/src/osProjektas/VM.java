@@ -31,7 +31,7 @@ public class VM {
 
 	private String[][] createVMMemory(int block) {
 		int j = 0;
-		for (int i = block; i < 10; i++) {
+		for (int i = block; i < block+10; i++) {
 			VMMemory[j] = Memory.memory[block];
 			j++;
 
