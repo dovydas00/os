@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-
+import java.awt.event.WindowListener;
 import javax.swing.JFileChooser;
 
 public class RMController {
@@ -80,7 +81,8 @@ public class RMController {
                 // įkelti į klasę
                 //rm.createVirtualMachine();
                 rmView.createVirtualMachine();
-            /*    rm.getActiveVM().addWindowListener( new WindowListener() {
+              
+               /* rm.getActiveVM().addWindowListener( new WindowListener() {
                     @Override
                     public void windowClosed(WindowEvent windowEvent) {
 //                        rmView.outputField.append( "\nPrograma baigė darbą.\n" );
@@ -97,8 +99,8 @@ public class RMController {
                     @Override
                     public void windowClosing(WindowEvent arg0) {
                         rmView.outputField.append( "\nPrograma baigė darbą.\n" );
-                        rm.getActiveVM().dispose();
-                        rm.destroyActiveVM();
+                        //rm.getActiveVM().dispose();
+                        //rm.destroyActiveVM();
                         rmView.executeButton.setEnabled( false );
                         rmView.inputField.setEnabled( false );
                         rmView.reloadButton.setEnabled( true );

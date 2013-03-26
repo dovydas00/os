@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) throws IOException{
     	Processor.createMemory();
     	Memory.createPageTable();
-    	new VM(10);
-    	VM.codeSegement[0][0]="";
-    	System.out.println(Memory.memory[10][0]);
+    	//new VM(10);
+    	//VM.codeSegement[0][0]="";
+    	//System.out.println(Memory.memory[10][0]);
   
     	
     
@@ -31,10 +31,10 @@ public class Main {
     	Memory.memory[0][1] = "AD09";
     	Memory.memory[0][9] = "900";
     	Processor.is=0;
-    	Processor.interpretCommand();
+    	//Processor.interpretCommand();
     	
     	Processor.loop(3);
-    	Processor.interpretCommand();
+    	//Processor.interpretCommand();
     	System.out.println(Processor.r1);
     	
        boolean debug = false;

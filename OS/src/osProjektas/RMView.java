@@ -28,23 +28,23 @@ public class RMView extends JFrame {
 	    JButton fileLoadButton = new JButton( "Pasirinkti failą" );
 	    private int registerWidth = 3;
 	   // private CustomTableCellRenderer renderer;
-	    private RegisterTextField cx = new RegisterTextField( registerWidth, "cx" );
-	    private RegisterTextField is = new RegisterTextField( registerWidth, "is" );
-	    private RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
-	    private RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
-	    private RegisterTextField pr = new RegisterTextField( registerWidth, "pr" );
-	    private RegisterTextField plr = new RegisterTextField( registerWidth, "plr" );
-	    private RegisterTextField bus = new RegisterTextField( registerWidth, "bus" );
-	    private RegisterTextField sv = new RegisterTextField( registerWidth, "sv" );
-	    private RegisterTextField pp = new RegisterTextField( registerWidth, "pp" );
-	    private RegisterTextField ap = new RegisterTextField( registerWidth, "ap" );
+	    private RegisterTextField cxV = new RegisterTextField( registerWidth, "cx" );
+	    private RegisterTextField isV = new RegisterTextField( registerWidth, "is" );
+	    private RegisterTextField r1V = new RegisterTextField( registerWidth, "R1" );
+	    private RegisterTextField r2V = new RegisterTextField( registerWidth, "R2" );
+	    private RegisterTextField prV = new RegisterTextField( registerWidth, "pr" );
+	    private RegisterTextField plrV = new RegisterTextField( registerWidth, "plr" );
+	    private RegisterTextField busV = new RegisterTextField( registerWidth, "bus" );
+	    private RegisterTextField svV = new RegisterTextField( registerWidth, "sv" );
+	    private RegisterTextField ppV = new RegisterTextField( registerWidth, "pp" );
+	    private RegisterTextField apV = new RegisterTextField( registerWidth, "ap" );
 	    
-	    private RegisterTextField k1 = new RegisterTextField( registerWidth, "k1" );
-	    private RegisterTextField k2 = new RegisterTextField( registerWidth, "k2" );
-	    private RegisterTextField k3 = new RegisterTextField( registerWidth, "k3" );
-	    private RegisterTextField k4 = new RegisterTextField( registerWidth, "k4" );
-	    private RegisterTextField lk = new RegisterTextField( registerWidth, "lk" );
-	    private RegisterTextField sp = new RegisterTextField( registerWidth, "sp" );    
+	    private RegisterTextField k1V = new RegisterTextField( registerWidth, "k1" );
+	    private RegisterTextField k2V = new RegisterTextField( registerWidth, "k2" );
+	    private RegisterTextField k3V = new RegisterTextField( registerWidth, "k3" );
+	    private RegisterTextField k4V = new RegisterTextField( registerWidth, "k4" );
+	    private RegisterTextField lkV = new RegisterTextField( registerWidth, "lk" );
+	    private RegisterTextField spV = new RegisterTextField( registerWidth, "sp" );    
 	    
 	    JTextField filenameField = new JTextField( 20 );
 	    JTextArea inputField = new JTextArea();
@@ -117,39 +117,39 @@ public class RMView extends JFrame {
 	                                 BorderFactory.createEmptyBorder( 10, 10, 10, 10) )
 	                                );
 	        
-	        registerPanel.add( cx.label );
-	        registerPanel.add( cx );
-	        registerPanel.add( pr.label );
-	        registerPanel.add( pr );
-	        registerPanel.add( sv.label );
-	        registerPanel.add( sv );
-	        registerPanel.add( is.label );
-	        registerPanel.add( is );
-	        registerPanel.add( plr.label );
-	        registerPanel.add( plr );
-	        registerPanel.add( pp.label );
-	        registerPanel.add( pp );
-	        registerPanel.add( r1.label );
-	        registerPanel.add( r1 );
-	        registerPanel.add( bus.label );
-	        registerPanel.add( bus );
-	        registerPanel.add( ap.label );
-	        registerPanel.add( ap );
-	        registerPanel.add( r2.label );
-	        registerPanel.add( r2 );
+	        registerPanel.add( cxV.label );
+	        registerPanel.add( cxV );
+	        registerPanel.add( prV.label );
+	        registerPanel.add( prV );
+	        registerPanel.add( svV.label );
+	        registerPanel.add( svV );
+	        registerPanel.add( isV.label );
+	        registerPanel.add( isV );
+	        registerPanel.add( plrV.label );
+	        registerPanel.add( plrV );
+	        registerPanel.add( ppV.label );
+	        registerPanel.add( ppV );
+	        registerPanel.add( r1V.label );
+	        registerPanel.add( r1V );
+	        registerPanel.add( busV.label );
+	        registerPanel.add( busV );
+	        registerPanel.add( apV.label );
+	        registerPanel.add( apV );
+	        registerPanel.add( r2V.label );
+	        registerPanel.add( r2V );
 	        
-	        registerPanel.add( k1.label );
-	        registerPanel.add( k1 );
-	        registerPanel.add( k2.label );
-	        registerPanel.add( k2 );
-	        registerPanel.add( k3.label );
-	        registerPanel.add( k3 );
-	        registerPanel.add( k4.label );
-	        registerPanel.add( k4 );
-	        registerPanel.add( lk.label );
-	        registerPanel.add( lk );
-	        registerPanel.add( sp.label );
-	        registerPanel.add( sp );
+	        registerPanel.add( k1V.label );
+	        registerPanel.add( k1V );
+	        registerPanel.add( k2V.label );
+	        registerPanel.add( k2V );
+	        registerPanel.add( k3V.label );
+	        registerPanel.add( k3V );
+	        registerPanel.add( k4V.label );
+	        registerPanel.add( k4V );
+	        registerPanel.add( lkV.label );
+	        registerPanel.add( lkV );
+	        registerPanel.add( spV.label );
+	        registerPanel.add( spV );
 	        
 	        JPanel buttonPanel = new JPanel();
 	        buttonPanel.setLayout( new GridLayout( 2, 2, 10, 10 ) );
@@ -180,9 +180,9 @@ public class RMView extends JFrame {
 	    
 	    public void createVirtualMachine(){
 	        executeButton.setEnabled( true );
-//	        inputField.setText( "" );
-//	        outputField.setText( "" );
-//	        errorField.setText( "" );
+	        //inputField.setText( "" );
+	        //outputField.setText( "" );
+	        //errorField.setText( "" );
 	        update();
 	    }
 	    
@@ -191,31 +191,31 @@ public class RMView extends JFrame {
 	    */
 	    
 	    public final void update() {
-	 //       setRegisters();
+	        setRegisters();
 	        fillTable();
 	    }
 	    
-	  /*  private void setRegisters() {
-	        sv.setText( RM.processor.getSI().toString() );
-	        pp.setText( RM.processor.getPI().toString() );
-	        ap.setText( RM.processor.getTI().toString() );           
-	        plr.setText( RM.processor.getPTR().toString() );
-	        is.setText( RM.processor.getRN().toString() );
-	        r1.setText( RM.processor.getR1() );
-	        r2.setText( RM.processor.getR2() );
-	        pr.setText( RM.processor.getC().toString() );
-	        cx.setText( RM.processor.getIC().toString() );
-	        bus.setText( RM.processor.getMode().toString() );     
+	    private void setRegisters() {
+	        svV.setText( Integer.toString(Processor.sv) );
 	        
-	        k1.setText( RM.processor.getMode().toString() ); 
-	        k2.setText( RM.processor.getMode().toString() ); 
-	        k3.setText( RM.processor.getMode().toString() ); 
-	        k4.setText( RM.processor.getMode().toString() ); 
-	        lk.setText( RM.processor.getMode().toString() ); 
-	        sp.setText( RM.processor.getMode().toString() ); 
+	        ppV.setText( Integer.toString(Processor.pp));
+	        apV.setText( Integer.toString(Processor.ap)); 
+	        plrV.setText( Integer.toString(Processor.plr));
+	        isV.setText( Integer.toString(Processor.is));
+	        r1V.setText( Integer.toString(Processor.r1));
+	        r2V.setText( Integer.toString(Processor.r2));
+	        prV.setText( Integer.toString(Processor.pr));
+	        cxV.setText( Integer.toString(Processor.cx));
+	        busV.setText( Integer.toString(Processor.bus));     
 	        
+	        k1V.setText( Integer.toString(Processor.k1)); 
+	        k2V.setText( Integer.toString(Processor.k2)); 
+	        k3V.setText( Integer.toString(Processor.k3)); 
+	        k4V.setText( Integer.toString(Processor.k4)); 
+	        lkV.setText( Integer.toString(Processor.lk)); 
+	        spV.setText( Integer.toString(Processor.sp)); 
 	    }
-	    */
+	    
 	    /**
 	     * Užpildo interfeiso lentelę virtualios mašinos atminties masyvo duomenimis.
 	     */

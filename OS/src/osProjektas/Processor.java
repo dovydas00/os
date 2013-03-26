@@ -40,6 +40,7 @@ public class Processor {
 	}
 
 	public static void loadRegister() {
+		cx++;
 		// r1 =
 	}
 
@@ -53,10 +54,12 @@ public class Processor {
 
 	public static void addToRegister() {
 		r1 = r1 + Integer.parseInt(Memory.getMemoryAtIs());
+		cx++;
 	}
 
 	public static void substractFromRegister() {
 		r1 = r1 - Integer.parseInt(Memory.getMemoryAtIs());
+		cx++;
 	}
 
 	public static void multiplyRegister() {
@@ -69,9 +72,10 @@ public class Processor {
 
 	public static void compare() {
 		//
+		cx++;
 	}
 
-	public static void interpretCommand() {
+/*	public static void interpretCommand() {
 		switch (getCommand().substring(0, 2)) {
 		case "AD": {
 			push();
@@ -83,49 +87,44 @@ public class Processor {
 
 		}
 
-	}
+	}*/
 
 	/**
 	 * Jump If Equal if PR == 0 then IS:= [x*10+y]
 	 * 
-	 * @param x
-	 * @param y
 	 */
-	public static void JIE(int x, int y) {
+	public static void JIE(int value) {
 		if (pr == 0) {
-			is = x * 10 + y;
+			//is = x * 10 + y;
+			is = value;
 		}
 	}
 
 	/**
 	 * Jump If Greater if PR == 1 then IS:= [x*10+y]
 	 * 
-	 * @param x
-	 * @param y
 	 */
-	public static void JIG(int x, int y) {
+	public static void JIG(int value) {
 		if (pr == 1) {
-			is = x * 10 + y;
+			//is = x * 10 + y;
+			is = value;
 		}
 	}
 
 	/**
 	 * Jump If Less if PR == -1 then IS:= [x*10+y]
 	 * 
-	 * @param x
-	 * @param y
 	 */
-	public static void JIL(int x, int y) {
+	public static void JIL(int value) {
 		if (pr == -1) {
-			is = x * 10 + y;
+			//is = x * 10 + y;
+			is = value;
 		}
 	}
 
 	/**
 	 * Just jump... jump where?
 	 * 
-	 * @param x
-	 * @param y
 	 */
 	// push adresas
 	public static int test() {
@@ -137,12 +136,15 @@ public class Processor {
 		
 	}
 
-	public static void JMP(int x, int y) {
+	public static void JMP(int value) {
 		push();
-		is = x * 10 + y;
+		//is = x * 10 + y;
+		is = value;
 	}
 
-	public static void getWord() {
+	public static void getWord() { //GW
+		sp = 3;
+		
 		//
 	}
 
@@ -172,7 +174,7 @@ public class Processor {
 	public static void loop(int cx) {
 		if (cx > 0){
 			push();
-			interpretCommand();
+			//interpretCommand(); ????? how to fix it? it is in VM, but is this shit good?
 			pop();
 			loop(cx-1);
 		}

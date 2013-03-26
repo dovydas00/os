@@ -29,7 +29,7 @@ public class CellPaint extends DefaultTableCellRenderer {
         return c;
     }
     
-    public void setIC( int cx ) {
+    public void setCx( int cx ) {
         this.cx = cx;
     }
 }

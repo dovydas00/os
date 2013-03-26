@@ -3,6 +3,7 @@ package osProjektas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -38,8 +39,8 @@ public class VMView extends JFrame{
     public VMView( VM machine ){
         setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
         setResizable( false );
-        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        //int width = screenSize.width;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
         //this.setLocation( width - 550, 350 * ( machine.getID() ) );
         this.machine = machine;
         this.processor = machine.processor;
@@ -89,17 +90,18 @@ public class VMView extends JFrame{
             }
         }
         
-        //renderer.setIs( machine.processor.getIs() );
+        renderer.setCx( machine.processor.is );
         table.setEnabled( false );
     }
     
     private void setRegisters() {
-    	/*pr.setText( processor.getPr().toString() );
-        is.setText( processor.getIs().toString() );
-        r1.setText( processor.getR1() );
-        r2.setText( processor.getR2() );
-        cx.setText( processor.getCx().toString() );
-        sv.setText( processor.getSv().toString() );*/
+    	pr.setText( Integer.toString(Processor.pr));
+        is.setText( Integer.toString(Processor.is));
+        r1.setText( Integer.toString(Processor.r1));
+        r2.setText( Integer.toString(Processor.r2));
+        cx.setText( Integer.toString(Processor.cx));
+        sv.setText( Integer.toString(Processor.sv));
+    	//Integer.toString(Processor.sv) panaudot
     }
     
     private JPanel getTablePanel() {
