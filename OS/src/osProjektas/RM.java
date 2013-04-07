@@ -17,7 +17,7 @@ public class RM {
 	}
 
 	public void loadProgram() {
-		 
+		VM vm = new VM(1);
 		Reader.readFromFile();
 		
 		for (int i=0; i<100;i++){
@@ -26,6 +26,7 @@ public class RM {
 				System.out.print(Memory.memory[i][j]);
 			}
 		}
+		new VMView(vm);
 	}
 
 	private int checkFreeVM(int i) {

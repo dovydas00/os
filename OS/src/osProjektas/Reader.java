@@ -45,7 +45,7 @@ public class Reader {
 							Processor.ap = 1;
 							System.out.println("Overloaded pertraukimas");
 						}
-						if (i != 9) {
+						if (i != 9 && !strLine.equals("CS:")) {
 							VMMemory.VMMemory[i][j] = strLine;
 						}
 
@@ -64,7 +64,7 @@ public class Reader {
 							Processor.ap = 1;
 							System.out.println("Overloaded pertraukimas");
 						}
-						if (i != 9) {
+						if (i != 9 && !strLine.equals("DS:")) {
 							VMMemory.VMMemory[i][j] = strLine;
 						}
 

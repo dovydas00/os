@@ -22,14 +22,14 @@ public class RMController {
         rmView.executeButton.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed( ActionEvent event ){
-              //  rm.getActiveVM().machine.interpretCommand();
+                Processor.interpretCommand();
                 update();
                 
                 if( Processor.pp != 0 ) {
                     if( Processor.pp == 1 ) {
                         rmView.errorField.append( "Neteisingas adresas.\n" );
                     } else if ( Processor.pp == 2 ) {
-                        rmView.errorField.append( "Neegzistuojantis operacijos kodas\n" );
+                    	rmView.errorField.append( "Neegzistuojantis operacijos kodas\n" );
                     } else if ( Processor.pp == 3 ) {
                          rmView.errorField.append( "Neskaitinė atminties " + 
                                                   "ląstelės reikšmė nurodytu " +
@@ -57,6 +57,7 @@ public class RMController {
                         rm.processor.incIC();
                     }*/
 
+                    
                     update();
                     //rm.processor.setSI( 0 );
                     //rm.processor.setPI( 0 );

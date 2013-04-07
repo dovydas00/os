@@ -15,7 +15,7 @@ public class VM {
 		Processor.sv= 0;
 		Processor.pr = 0;
 		Processor.is = 0;
-		VMMemory.saveVMRegisters();
+		
 	}
 
 
@@ -139,25 +139,25 @@ public class VM {
 	        } else if (command.startsWith("AL")){
 	        	Processor.assignPlr(number);
 	        } else if (command.startsWith("AB")){
-	        	Processor.assignBus(number);
+	        	Processor.AB(number);
 	        } else if (command.startsWith("AS")){
 	        	Processor.assignSv(number);
 	        } else if (command.startsWith("AP")){
 	        	Processor.assignPp(number);
 	        } else if (command.startsWith("AA")){
-	        	Processor.assignAp(number);
+	        	Processor.AP(number);
 	        } else if (command.startsWith("A1")){
-	        	Processor.assignK1(number);
+	        	Processor.A1(number);
 	        } else if (command.startsWith("A2")){
-	        	Processor.assignK2(number);
+	        	Processor.A2(number);
 	        } else if (command.startsWith("A3")){
-	        	Processor.assignK3(number);
+	        	Processor.A3(number);
 	        } else if (command.startsWith("A4")){
-	        	Processor.assignK4(number);
+	        	Processor.A4(number);
 	        } else if (command.startsWith("BL")){
 	        	Processor.assignLk(number);
 	        } else if (command.startsWith("BS")){
-	        	Processor.assignSp(number);
+	        	Processor.BS(number);
 	        } else if (command.startsWith("LD")){
 	        	Processor.reloadRegister(number);
 	        }

@@ -66,6 +66,10 @@ public class VMMemory {
 
 	}
 
+	public static String getMemoryAtIs() {
+		
+		return (VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
+	}
 	public static void pushtoVmStack(String element) {
 
 	}
