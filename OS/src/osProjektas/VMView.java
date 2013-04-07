@@ -33,8 +33,7 @@ public class VMView extends JFrame{
     RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
     RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
-    JTable table = new JTable( ( VM.blocks / Memory.blockSize ), 
-                              Memory.blockSize );
+    JTable table = new JTable( 10,10 );
 	
     public VMView( VM machine ){
         setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
@@ -43,7 +42,7 @@ public class VMView extends JFrame{
         int width = screenSize.width;
         //this.setLocation( width - 550, 350 * ( machine.getID() ) );
         this.machine = machine;
-        this.processor = machine.processor;
+      //  this.processor = machine.processor;
         this.setSize( new Dimension( 550, 350 ) );
         setTitle( "Virtuali mašina" );
         
@@ -84,13 +83,14 @@ public class VMView extends JFrame{
     }
     
     private void fillTable() {
-        for ( int i = 0; i < VM.blocks / Memory.blockSize; i ++ ) {
-            for ( int j = 0; j < Memory.blockSize; j++ ) {
-                //table.setValueAt( machine.getMemoryContent( i * Memory.blockSize + j ), i, j );
+        for ( int i = 0; i < 10 ; i ++ ) {
+            for ( int j = 0; j < 10; j++ ) {
+                table.setValueAt( VMMemory.VMMemory[i][j], i, j );
+                System.out.println(VMMemory.VMMemory[i][j]);
             }
         }
         
-        renderer.setCx( machine.processor.is );
+        renderer.setCx(Processor.is );
         table.setEnabled( false );
     }
     
@@ -125,7 +125,7 @@ public class VMView extends JFrame{
         
         JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
         
-        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.blockSize; j++ ) {
+        for ( int j = 0; j < 10; j++ ) {
             JLabel rowLabel = new JLabel( Integer.toString( j ) );
             rowLabel.setOpaque( true );
             rowLabel.setHorizontalAlignment( JLabel.CENTER );

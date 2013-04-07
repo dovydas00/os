@@ -4,12 +4,12 @@ package osProjektas;
 public class Processor {
 	// Pagrindiniai registrai
 	static Integer r1 = 0;
-	static int r2 = 0;
-	static int plr = 9;
-	static int bus = 0;
-	static int sv = 0;
-	static int cx = 0;
-	static int pr = 0;
+	static Integer r2 = 0;
+	static Integer plr = 9;
+	static Integer bus = 0;
+	static Integer sv = 0;
+	static Integer cx = 0;
+	static Integer pr = 0;
 	static Integer is = 0;
 
 	// Pertraukimo registrai
@@ -20,10 +20,16 @@ public class Processor {
 	static int k2 = 0;
 	static int k3 = 0;
 	static int k4 = 0;
-	static int lk = 9;
+	static int lk = 0;
 
 	static Byte[] asd = new Byte[4];
 
+	
+	public static void checkInterupt(){
+		switch (pp){
+		case 2: 
+		}
+	}
 	public static void assignR1(int value) {
 		is++;
 		r1 = Integer.parseInt(Memory.getMemoryAtIs());
@@ -75,7 +81,7 @@ public class Processor {
 		cx++;
 	}
 
-/*	public static void interpretCommand() {
+	public static void interpretCommand() {
 		switch (getCommand().substring(0, 2)) {
 		case "AD": {
 			push();
@@ -84,10 +90,12 @@ public class Processor {
 			pop();
 			is++;
 		}
+		
+		default: Processor.pp=2;
 
 		}
 
-	}*/
+	}
 
 	/**
 	 * Jump If Equal if PR == 0 then IS:= [x*10+y]
@@ -130,12 +138,19 @@ public class Processor {
 	public static int test() {
 
 		if ((pp + sp + ap + k1 + k2 + k3 + k4 + lk) > 0) {
+			Processor.bus = 1; //Jei bus == 1, tai rezimas yra supervizoriaus
+			RM.saveRegisters();
 			return 1;
 		} else
+			Processor.bus = 0; //VM mašinos rėžimas
 			return 0;
 		
 	}
 
+	public static void assignRMRegistersStack(){
+		Memory.rmRegistersStack = Memory.memory[0];
+	}
+	
 	public static void JMP(int value) {
 		push();
 		//is = x * 10 + y;

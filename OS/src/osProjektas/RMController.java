@@ -68,19 +68,13 @@ public class RMController {
             @Override
             public void actionPerformed( ActionEvent event ){
                 String filename = "";
-                try {
-                    filename = rmView.filenameField.getText();
-                    rm.reader.setFile( filename );
-                    rm.reader.parseFile();
-                    //rm.loadProgram( rm.reader.getDataArray() );
-                    rmView.update();
-                } catch ( IOException ioe ) {
-                    rmView.errorField.append("Klaida atidarant failą " + filename + ".\n" );
-                    System.out.println( ioe.getMessage() );
-                }
+                filename = rmView.filenameField.getText();
+				rm.loadProgram();
+				rmView.update();
                 // įkelti į klasę
                 //rm.createVirtualMachine();
                 rmView.createVirtualMachine();
+               
               
                /* rm.getActiveVM().addWindowListener( new WindowListener() {
                     @Override

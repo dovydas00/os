@@ -50,7 +50,7 @@ public class RMView extends JFrame {
 	    JTextArea inputField = new JTextArea();
 	    JTextArea outputField = new JTextArea();
 	    JTextArea errorField = new JTextArea();
-	    JTable table = new JTable( ( RM.MEMORY_SIZE / Memory.blockSize ), 
+	    JTable table = new JTable( ( 4095 / Memory.blockSize ), 
 	                              Memory.blockSize );
 	    
 	    public RMView( RM RM ){
@@ -221,9 +221,9 @@ public class RMView extends JFrame {
 	     */
 	        
 	    public void fillTable() {
-	        for( int i = 0; i <  RM.MEMORY_SIZE / Memory.blockSize ; i++ ){
-	            for( int j = 0; j <  Memory.blockSize; j++ ){
-	      //          this.table.setValueAt( RM.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
+	        for( int i = 0; i < 100; i++ ){
+	            for( int j = 0; j < 10; j++ ){
+	            	this.table.setValueAt( Memory.memory[i][j], i, j );
 	            }
 	        }
 	        
@@ -251,7 +251,7 @@ public class RMView extends JFrame {
 	        
 	        JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
 	        
-	        for ( int j = 0; j < RM.MEMORY_SIZE / Memory.blockSize; j++ ) {
+	        for ( int j = 0; j < 4095 / Memory.blockSize; j++ ) {
 	            JLabel rowLabel = new JLabel( Integer.toString( j ) );
 	            rowLabel.setOpaque( true );
 	            rowLabel.setHorizontalAlignment( JLabel.CENTER );

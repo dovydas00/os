@@ -9,8 +9,12 @@ public class Memory {
 	static String FILL_SYMBOL = ""; // užpido atminti tuščiu stringu
 	public static String[][] memory; // atmintis tai
 	public static String stack[]; // stekui išskiriame vieną bloką atminties
+	public static String modesStack[];
+	public static String rmRegistersStack[];
+	
 	public static String[] pageTable;
 
+	
 	public static void checkIfFree(int block) {
 
 		for (int i = 0; i < 16; i++) {
@@ -23,20 +27,21 @@ public class Memory {
 		return (memory[~~(Processor.is / 10)][Processor.is % 10]);
 	}
 
+
 	public static void createPageTable() {
 		if (Memory.memory == null){
 			Processor.createMemory();
 		}
 		pageTable = Memory.memory[9];
-		pageTable[0] = "10";
-		pageTable[1] = "19";
-		pageTable[2] = "28";
-		pageTable[3] = "37";
-		pageTable[4] = "46";
-		pageTable[5] = "55";
-		pageTable[6] = "64";
-		pageTable[7] = "73";
-		pageTable[8] = "81";
+		pageTable[0] = "9";
+		pageTable[1] = "10";
+		pageTable[2] = "20";
+		pageTable[3] = "30";
+		pageTable[4] = "40";
+		pageTable[5] = "50";
+		pageTable[6] = "60";
+		pageTable[7] = "70";
+		pageTable[8] = "80";
 		pageTable[9] = "90";
 	}
 

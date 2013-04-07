@@ -3,30 +3,41 @@ package osProjektas;
 import java.io.IOException;
 
 public class Main {
+	
+	
+	public static void startRM(){
+		Processor.createMemory();
+		Memory.createPageTable();
+		Processor.assignStackToMemory();
+		Processor.test();
+				
+	}
 
 
     public static void main(String[] args) throws IOException{
     	Processor.createMemory();
     	Memory.createPageTable();
-    	//new VM(10);
-    	//VM.codeSegement[0][0]="";
-    	//System.out.println(Memory.memory[10][0]);
-  
+    	Processor.assignStackToMemory();
+    	//RM.saveRegisters();
+    	
     	
     
-    	/*for (int i=0; i<10;i++){
+  
+    	
+  /*  
+    	for (int i=0; i<10;i++){
     		Processor.is = i;
-    		Memory.push();
+    		Processor.push();
     		
-    		//Memory.memory[Memory.blocks-1][i] = i + "";
+    		Memory.memory[Memory.blocks-1][i] = i + "";
     	}
-    //	Memory.assignStackToMemory(); // Nustato stekui atminties vietas
+    	Processor.assignStackToMemory(); // Nustato stekui atminties vietas
     	
     	for (int i=0; i<10;i++){
-    		Memory.pop();
+    		Processor.pop();
     		System.out.println(Processor.is);
     	}
-    	*/
+    	
     	Memory.memory[0][0] = "AD09";
     	Memory.memory[0][1] = "AD09";
     	Memory.memory[0][9] = "900";
@@ -35,7 +46,7 @@ public class Main {
     	
     	Processor.loop(3);
     	//Processor.interpretCommand();
-    	System.out.println(Processor.r1);
+    	System.out.println(Processor.r1);*/
     	
        boolean debug = false;
        Reader reader = new Reader();

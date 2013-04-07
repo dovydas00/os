@@ -8,138 +8,79 @@ import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
 public class Reader {
-    
-    //private Memory dataArray = new Memory( VM.MEMORY_SIZE );
-    private BufferedReader reader;
-   // private int n;
-    
-    /**
-     * TuÅ¡Ä�ias konstruktorius.
-     */
-    
-    Reader() {      
-    }
-    
-    /**
-     * Konstruktorius, priskiriantis failo pavadinimÄ… ir atidarantis srautÄ… 
-     * skaitymui.
-     * 
-     * @param filename
-     *      Failo, iÅ¡ kurio norima skaityti, pavadinimas.
-     * @throws IOException 
-     *      Neradus nurodyto failo.
-     */
-    
-    Reader( String filename ) throws IOException{
-        setFile( filename );
-    }
-    
-    /**
-     * Priskiriamas naujas failas ir atidaromas skaitymo srautas.
-     * @param filename
-     *      Failo, iÅ¡ kurio norima skaityti, pavadinimas.
-     * @throws IOException 
-     *      Neradus nurodyto failo.
-     */
-    
-    public final void setFile( String filename ) throws IOException {
-        FileInputStream fstream = new FileInputStream( filename );
-        DataInputStream in = new DataInputStream( fstream );
-        this.reader = new BufferedReader( new InputStreamReader( in ) );
-    }
-    
-    /**
-     * Nuskaito, apdoroja ir suraÅ¡o Ä¯ masyvÄ… nustatyto failo eilutes.
-     * 
-     * @throws IOException 
-     *      Kilus klaidoms Ä¯vesties sraute.
-     */
-    
-    public void parseFile() throws IOException {
-        
-        String fileLine;
-       // n = 0;
-        
-        while ( !reader.readLine().startsWith( "CS:" ) ){
-        }
-    
-        while( !( ( fileLine = reader.readLine() ).startsWith( "DS:" ) ) ){
-           // parseCodeSegment( fileLine );
-        }
-    
-        //n = VM.DATA_SEGMENT_START;
-        while( ( fileLine = reader.readLine() ) != null ){
-            parseDataSegment( fileLine );
-        }
-        
-        reader.close();
-    }
-    
-    /**
-     * Apdorojamos kodo segmento eilutÄ— ir Ä¯raÅ¡oma Ä¯ masyvÄ….
-     * 
-     * @param codeLine
-     *      Kodo segmento eilutÄ—.
-     */
-    
-    /*private void parseCodeSegment ( String codeLine ) {
-        dataArray.setMemory( n, codeLine );
-        n++;
-    }*/
-    
-    /**
-     * Apdorojama duomenÅ³ segmento eilutÄ— ir Ä¯raÅ¡oma Ä¯ masyvÄ….
-     * 
-     * @param dataLine 
-     *      DuomenÅ³ segmento eilutÄ—.
-     */
-    
-    private void parseDataSegment( String dataLine ) {
-        
-        String subSeq;
 
-        if( Pattern.matches( "^SW\\d\\d.*", dataLine ) ){
-            //n = VM.DATA_SEGMENT_START + Integer.parseInt( dataLine.substring( 2, 4 ) );
-            dataLine = dataLine.substring( 5 );   //SW komanda, 2 skaitmenys bei tarpo simbolis
-        } else if ( dataLine.startsWith( "SW " ) ) {
-            dataLine = dataLine.substring( 3 );   //SW komanda bei tarpo simbolis
-        }
-        
-        int residueLength = dataLine.length() % Memory.CELL_SIZE;
-        int residueStart = dataLine.length() - residueLength;
-        int k = 0;
-        while( k < residueStart ){
-            subSeq = dataLine.substring( k, k + Memory.CELL_SIZE );
-            k += Memory.CELL_SIZE;
-            //dataArray.setMemory( n, subSeq );
-           // n++;
-        }
-        
-        subSeq = dataLine.substring( residueStart );
-        if ( !subSeq.equals( "" ) ) {
-           // dataArray.setMemory( n, subSeq );
-            //n++;
-        }
-    }
-    
-    /**
-     * GrÄ…Å¾inamas duomenÅ³ masyvas.
-     * 
-     * @return 
-     *      DuomenÅ³ masyvas.
-     */
-    
-  /*  public Memory getDataArray() {
-       // return this.dataArray;
-    }*/
-    
-    /**
-     * DuomenÅ³ masyvas iÅ¡vedamas Ä¯ standartinÄ™ iÅ¡vestÄ¯. Naudojama diagnostikai.
-     */
-    
-   /* public void printDataArray() {       
-        for( int i = 0; i < dataArray.length; i++ ){
-            System.out.println( i + " " + dataArray.getMemory( i ) );
-        }
-    }*/
+	public static void readFromFile() {
+		{
+			try {
+				// Open the file that is the first
+				// command line parameter
+				FileInputStream fstream = new FileInputStream("Program_1.txt");
+				// Get the object of DataInputStream
+				DataInputStream in = new DataInputStream(fstream);
+				BufferedReader br = new BufferedReader(
+						new InputStreamReader(in));
+				String strLine;
+				String segment = "";
+				// Read File Line By Line
+				while ((strLine = br.readLine()) != null) {
+					// Print the content on the console
+					if (strLine.equals("CS:")) {
+						segment = "CS";
+					}
+					if (strLine.equals("DS:")) {
+						segment = "DS";
+					}
+
+					if (segment.equals("CS")) {
+						int i = 0;
+						int j = 0;
+						while (VMMemory.VMMemory[i][j] != null) {
+							if (j == 9) {
+								i++;
+								j = -1;
+							}
+							j++;
+						}
+						if (i == 9) {
+							Processor.ap = 1;
+							System.out.println("Overloaded pertraukimas");
+						}
+						if (i != 9) {
+							VMMemory.VMMemory[i][j] = strLine;
+						}
+
+					}
+					if (segment.equals("DS")) {
+						int i = 6;
+						int j = 0;
+						while (VMMemory.VMMemory[i][j] != null) {
+							if (j == 9) {
+								i++;
+								j = -1;
+							}
+							j++;
+						}
+						if (i == 9) {
+							Processor.ap = 1;
+							System.out.println("Overloaded pertraukimas");
+						}
+						if (i != 9) {
+							VMMemory.VMMemory[i][j] = strLine;
+						}
+
+					}
+					
+					
+
+				}
+
+			
+				// Close the input stream
+				in.close();
+			} catch (Exception e) {// Catch exception if any
+				System.err.println("Error: " + e.getMessage());
+
+			}
+		}
+	}
 }

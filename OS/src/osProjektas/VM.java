@@ -1,43 +1,24 @@
 package osProjektas;
 
 public class VM {
-	static public String VMMemory[][];
-	static public int blocks = 10;
-	static public int blockSize = 10;
-	static public String dataSegment[][];
-	static public String codeSegement[][];
-	static public String stackSegement[][];
-	public Processor processor;
+
 	private boolean debug = false;
 	private int id;
 	private boolean instructionStep = false;
 
 	public VM(int block) {
-		VMMemory = createVMMemory(block);
-
-		for (int i = 0; i < 6; i++) {
-			dataSegment[i] = VMMemory[i];
-		}
-
-		for (int i = 6; i < 8; i++) {
-			codeSegement[i] = VMMemory[i];
-		}
-
-		for (int i = 8; i < 9; i++) {
-			stackSegement[i] = VMMemory[i];
-		}
-
+		VMMemory.VMMemory = VMMemory.createVMMemory(block);
+		
+		Processor.r1 = 0;
+		Processor.r2 = 0;
+		Processor.cx = 0;
+		Processor.sv= 0;
+		Processor.pr = 0;
+		Processor.is = 0;
+		VMMemory.saveVMRegisters();
 	}
 
-	private String[][] createVMMemory(int block) {
-		int j = 0;
-		for (int i = block; i < block+10; i++) {
-			VMMemory[j] = Memory.memory[block];
-			j++;
 
-		}
-		return VMMemory;
-	}
 
 /*	*//**
 	 * Konstruktorius.
