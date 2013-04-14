@@ -11,7 +11,7 @@ public class Processor {
 	static Integer sv = 0;
 	static Integer cx = 0;
 	static Integer pr = 0;
-	static Integer is = 0;
+	public static Integer is = 0;
 
 	// Pertraukimo registrai
 	static int pp = 0;
@@ -26,108 +26,7 @@ public class Processor {
 	static Byte[] asd = new Byte[4];
 
 	// Sutvarkyti kanalus, kad ka nors darytu
-	public static boolean checkInterupt() {
-		VMMemory.saveVMRegisters();
 
-		switch (pp) {
-		case 1: {
-			System.out.println("Neteisingas adresas");
-			AP(0);
-			return true;
-		}
-		case 2: {
-			System.out.println("Neegzistuojantis operacijos kodas");
-			AP(0);
-			return true;
-		}
-		case 3: {
-			System.out
-					.println("Neskaitinė atminties ląstelės reikšmė nurodytu adresu");
-			AP(0);
-			return true;
-		}
-		}
-		switch (sp) {
-		case 1: {
-			System.out.println("Pertraukima issauke komanda GD");
-			BS(0);
-			return false;
-		}
-		case 2: {
-			System.out.println("Pertraukima issauke komanda DV");
-			BS(0);
-			return false;
-		}
-		case 3: {
-			System.out.println("Pertraukima issauke komanda GW");
-			BS(0);
-			return false;
-		}
-		case 4: {
-			RMController.printString();
-			BS(0);
-			
-			return false;
-		}
-		case 5: {
-			System.out.println("Pertraukima issauke komanda PW");
-			BS(0);
-			return false;
-		}
-		case 6: {
-			System.out.println("Pertraukima issauke komanda HALT");
-			BS(0);
-			return true;
-		}
-		}
-		switch (ap) {
-		case 1: {
-			System.out.println("Ivyko perpildymas");
-			AA(0);
-			return true;
-
-		}
-		}
-		switch (lk) {
-		case 1: {
-			System.out.println("Laikmačio pertraukimas");
-			BL(1);
-			return true;
-		}
-
-		}
-
-		switch (k1) {
-		case 1: {
-			System.out.println("Pertraukimą iššaukė išorinė atmintis");
-			A1(0);
-			return false;
-		}
-		}
-		switch (k2) {
-		case 1: {
-			System.out.println("Pertraukimą iššaukė įvedimo kanalas");
-			A2(0);
-			return false;
-		}
-		}
-		switch (k3) {
-		case 1: {
-			System.out.println("Pertraukimą iššaukė įšvedimo kanalas");
-			A3(0);
-			return false;
-		}
-		}
-		switch (k4) {
-		case 1: {
-			System.out.println("Pertraukimą iššaukė vartotojo atmintis");
-			A4(0);
-			return false;
-		}
-		}
-
-		return false;
-	}
 
 	private static void BL(int value) {
 		lk = value;
@@ -232,26 +131,25 @@ public class Processor {
 	 * 
 	 */
 	// push adresas
-	public static int test() {
+	public static void test() {
 		
 		if ((pp + sp + ap + k1 + k2 + k3 + k4 + lk) > 0) {
 			AB(1); // Bus reiksme priskiriama vienetui
-			checkInterupt();
+			RMController.checkInterupt();
 			AB(0);
 							// Turetu perduoti valdyma kitai VM darba, jei tokia yra sukurta
-			
-			return 1;
+		
 		} else
 			Processor.bus = 0;// VM mašinos rėžimas
-		return 0;
+	
 
 	}
 
-	private static void cleanMemory() {
+	public static void cleanMemory() {
 		System.out.println("Isvaloma atmintis");
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				VMMemory.VMMemory[i][j] = "null";
+				VMMemory.VMMemory[i][j] = null;
 			}
 
 		}

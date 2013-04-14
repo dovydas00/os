@@ -9,8 +9,8 @@ public class Main {
 		Processor.createMemory();
 		Memory.createPageTable();
 		Processor.assignStackToMemory();
-		Processor.test();
-
+		//Processor.test();
+		
 	}
 
 	public static void main(String[] args) throws IOException {

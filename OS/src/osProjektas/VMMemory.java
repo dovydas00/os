@@ -7,11 +7,11 @@ public class VMMemory {
 	static public int blockSize = 10;
 	private int dataSegmentStart = 0;
 	private int codeSegmentStart = 5;
-	private static String[] stack;
+	public static String[] stack;
 
 	public VMMemory(int VMMemoryCount) {
 		VMMemory = createVMMemory(VMMemoryCount);
-
+		
 	}
 
 	public static String[][] createVMMemory(int VMMemoryCount) {
@@ -27,7 +27,9 @@ public class VMMemory {
 	}
 
 	public static void saveVMRegisters() {
-
+		if (stack == null ){
+		stack = VMMemory[9];
+		}
 		VMMemory[9][0] = Processor.r1.toString();
 		VMMemory[9][1] = Processor.r2.toString();
 		VMMemory[9][2] = Processor.cx.toString();
@@ -67,21 +69,31 @@ public class VMMemory {
 	}
 
 	public static String getMemoryAtIs() {
-	//	System.out.println("IS'as paduodant atminciai" + Processor.is);
+		// System.out.println("IS'as paduodant atminciai" + Processor.is);
 		System.out.println(VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
-			
-		
-		//	System.out.println("Procesoriaus IS" + Processor.is);
-			//System.out.println("stulpelis" + ~~(Processor.is / 10));
-			//System.out.println("eilute" + Processor.is % 10);
-		//	VMMemory[~~(Processor.is / 10)][Processor.is % 10] = "10";
-		
-	
-			return (VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
-		
+
+		// System.out.println("Procesoriaus IS" + Processor.is);
+		// System.out.println("stulpelis" + ~~(Processor.is / 10));
+		// System.out.println("eilute" + Processor.is % 10);
+		// VMMemory[~~(Processor.is / 10)][Processor.is % 10] = "10";
+
+		return (VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
+
 	}
 
-	public static void pushtoVmStack(String element) {
+	public static void popVMRegisters() {
+	
+		Processor.r1 = Integer.parseInt(VMMemory[9][0]);
+		Processor.r2 = Integer.parseInt(VMMemory[9][1]);
+		Processor.cx = Integer.parseInt(VMMemory[9][2]);
+		Processor.sv = Integer.parseInt(VMMemory[9][3]);
+		Processor.pr = Integer.parseInt(VMMemory[9][4]);
+		Processor.is = Integer.parseInt(VMMemory[9][5]);
+		for (int i=0;i<10;i++){
+			VMMemory[9][i] = null;
+		}
+		System.out.println("Registrai ispopinti");
+		//Processor.cleanMemory();
 
 	}
 }
