@@ -16,18 +16,18 @@ public class VMMemory {
 
 	public static String[][] createVMMemory(int VMMemoryCount) {
 		int vm = Integer.parseInt(Memory.pageTable[VMMemoryCount]);
+		Memory.pageTable[VMMemoryCount] += "A";
 		for (int i = 0; i < 10; i++) {
 			VMMemory[i] = Memory.memory[vm];
 			vm++;
 
 		}
+		VMMemory[5][4] = "10";
 		return VMMemory;
 	}
 
-	
-
 	public static void saveVMRegisters() {
-		
+
 		VMMemory[9][0] = Processor.r1.toString();
 		VMMemory[9][1] = Processor.r2.toString();
 		VMMemory[9][2] = Processor.cx.toString();
@@ -67,9 +67,20 @@ public class VMMemory {
 	}
 
 	public static String getMemoryAtIs() {
+	//	System.out.println("IS'as paduodant atminciai" + Processor.is);
+		System.out.println(VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
+			
 		
-		return (VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
+		//	System.out.println("Procesoriaus IS" + Processor.is);
+			//System.out.println("stulpelis" + ~~(Processor.is / 10));
+			//System.out.println("eilute" + Processor.is % 10);
+		//	VMMemory[~~(Processor.is / 10)][Processor.is % 10] = "10";
+		
+	
+			return (VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
+		
 	}
+
 	public static void pushtoVmStack(String element) {
 
 	}

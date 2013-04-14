@@ -11,10 +11,67 @@ import java.awt.event.WindowListener;
 import javax.swing.JFileChooser;
 
 public class RMController {
-    
-    RMView rmView;
+    public static RMView belekas;
+    public static RMView rmView;
     RM rm;
     
+    public static void interpretCommand() {
+		String command = Processor.getCommand(); 
+		switch (command.substring(0, 2)){
+		case "AD": {
+			Processor.push();
+			System.out.println("Procesoriaus rodykle pries priskyrima" + Processor.is);
+			Processor.is = Integer.parseInt(command.substring(2, 4));
+			System.out.println("Procesoriaus rodykle" + Processor.is);
+			Processor.r1 = Processor.r1 + Integer.parseInt(VMMemory.getMemoryAtIs());
+			System.out.println("Po komandos getMemoryAtIs" + Processor.is);
+			Processor.pop();
+			System.out.println("Po popinimo" + Processor.is);
+			Processor.is++;
+			break;
+		}
+
+		case "PS": {
+			Processor.BS(4);
+		
+			break;
+		}
+		
+		case "GW": {
+			
+			Processor.A1(1);
+			break;
+		}
+
+		default: {
+			Processor.AP(2);
+			
+			break;
+		}
+
+		}
+		Processor.test();
+
+	}
+
+    public static void  printString() {
+		String line = "";
+		
+		System.out.println("Pertraukima issauke komanda PS");
+		Processor.push();
+		Processor.is = Integer.parseInt(Processor.getCommand().substring(2, 4));
+		Processor.is = 60 + Processor.is;
+		while (!VMMemory.getMemoryAtIs().equals("EOF$")) {
+			line = line + VMMemory.getMemoryAtIs();
+			Processor.is++;
+
+		}
+		Processor.pop();
+		Processor.is++;
+		Processor.BS(0);
+		rmView.outputField.setText(line);
+		//
+	}
     public RMController ( RMView window, RM machine ) {
         this.rmView = window;
         this.rm = machine;
@@ -22,9 +79,11 @@ public class RMController {
         rmView.executeButton.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed( ActionEvent event ){
-                Processor.interpretCommand();
-                update();
-                
+                interpretCommand();
+                //update();
+                if(Processor.sp == 4){
+                	printString();
+                }
                 if( Processor.pp != 0 ) {
                     if( Processor.pp == 1 ) {
                         rmView.errorField.append( "Neteisingas adresas.\n" );
@@ -58,7 +117,7 @@ public class RMController {
                     }*/
 
                     
-                    update();
+                    rmView.update();
                     //rm.processor.setSI( 0 );
                     //rm.processor.setPI( 0 );
                 }
@@ -163,7 +222,7 @@ public class RMController {
                     }
                 
 	    }
-            
+        
             @Override
             public void keyReleased( KeyEvent event ) {
             }

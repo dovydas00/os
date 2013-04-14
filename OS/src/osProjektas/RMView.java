@@ -27,7 +27,7 @@ public class RMView extends JFrame {
 	    JButton executeButton = new JButton( "Kita komanda" );
 	    JButton fileLoadButton = new JButton( "Pasirinkti failą" );
 	    private int registerWidth = 3;
-	   // private CustomTableCellRenderer renderer;
+	    private CustomTableCellRenderer renderer;
 	    private RegisterTextField cxV = new RegisterTextField( registerWidth, "cx" );
 	    private RegisterTextField isV = new RegisterTextField( registerWidth, "is" );
 	    private RegisterTextField r1V = new RegisterTextField( registerWidth, "R1" );
@@ -38,7 +38,7 @@ public class RMView extends JFrame {
 	    private RegisterTextField svV = new RegisterTextField( registerWidth, "sv" );
 	    private RegisterTextField ppV = new RegisterTextField( registerWidth, "pp" );
 	    private RegisterTextField apV = new RegisterTextField( registerWidth, "ap" );
-	    
+	
 	    private RegisterTextField k1V = new RegisterTextField( registerWidth, "k1" );
 	    private RegisterTextField k2V = new RegisterTextField( registerWidth, "k2" );
 	    private RegisterTextField k3V = new RegisterTextField( registerWidth, "k3" );
@@ -48,7 +48,7 @@ public class RMView extends JFrame {
 	    
 	    JTextField filenameField = new JTextField( 20 );
 	    JTextArea inputField = new JTextArea();
-	    JTextArea outputField = new JTextArea();
+	    public JTextArea outputField = new JTextArea();
 	    JTextArea errorField = new JTextArea();
 	    JTable table = new JTable( ( 4095 / Memory.blockSize ), 
 	                              Memory.blockSize );
@@ -227,15 +227,15 @@ public class RMView extends JFrame {
 	            }
 	        }
 	        
-	     //   renderer.setIC( RM.processor.page( RM.processor.getIC() ) );
+	        renderer.setRMIS(Processor.is );
 	        table.setEnabled( false );
 	    }
 	    
 	    private JPanel getTablePanel(){
 	        table.setCellSelectionEnabled( false );
 	        table.setEnabled( false );
-	   //     renderer = new CustomTableCellRenderer();
-	       // table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
+	        renderer = new CustomTableCellRenderer();
+	        table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
 	        
 	        JTableHeader columnHeader = table.getTableHeader();
 	        columnHeader.setResizingAllowed( false );
@@ -301,7 +301,7 @@ public class RMView extends JFrame {
 	        tablePanel.add( tableCellPane );
 	        
 	        tablePanel.setBorder( BorderFactory.createTitledBorder(
-	                                 BorderFactory.createLineBorder( Color.BLACK ),
+	                                 BorderFactory.createLineBorder( Color.GREEN ),
 	                                 "Reali atmintis" )
 	                               );
 	        

@@ -1,5 +1,7 @@
 package osProjektas;
 
+import javax.sound.sampled.Line;
+
 public class Processor {
 	// Pagrindiniai registrai
 	static Integer r1 = 0;
@@ -23,7 +25,7 @@ public class Processor {
 
 	static Byte[] asd = new Byte[4];
 
-	//Sutvarkyti kanalus, kad ka nors darytu
+	// Sutvarkyti kanalus, kad ka nors darytu
 	public static boolean checkInterupt() {
 		VMMemory.saveVMRegisters();
 
@@ -62,8 +64,9 @@ public class Processor {
 			return false;
 		}
 		case 4: {
-			System.out.println("Pertraukima issauke komanda PS");
+			RMController.printString();
 			BS(0);
+			
 			return false;
 		}
 		case 5: {
@@ -187,37 +190,8 @@ public class Processor {
 		cx++;
 	}
 
-	public static void interpretCommand() {
-		switch (getCommand().substring(0, 2)) {
-		case "AD": {
-			push();
-			is = Integer.parseInt(getCommand().substring(2, 4));
-			r1 = r1 + Integer.parseInt(VMMemory.getMemoryAtIs());
-			pop();
-			is++;
-		}
-
-		case "PS": {
-
-			push();
-			is = Integer.parseInt(getCommand().substring(2, 4));
-			is = 60 + is;
-			while (!VMMemory.getMemoryAtIs().equals("EOF$")) {
-				is++;
-				System.out.println(VMMemory.getMemoryAtIs());
-
-			}
-			pop();
-			is++;
-		}
-
-		default: {
-			AP(2);
-			Processor.test();
-		}
-
-		}
-
+	public static String SEOF() {
+		return "EOF$";
 	}
 
 	/**
@@ -259,16 +233,13 @@ public class Processor {
 	 */
 	// push adresas
 	public static int test() {
-
+		
 		if ((pp + sp + ap + k1 + k2 + k3 + k4 + lk) > 0) {
 			AB(1); // Bus reiksme priskiriama vienetui
 			checkInterupt();
 			AB(0);
-			System.out.println("Programa baigia darba");
-			if (checkInterupt()) {
-				cleanMemory();
-				// Turetu perduoti valdyma kitai VM darba, jei tokia yra sukurta
-			}
+							// Turetu perduoti valdyma kitai VM darba, jei tokia yra sukurta
+			
 			return 1;
 		} else
 			Processor.bus = 0;// VM mašinos rėžimas
@@ -277,6 +248,7 @@ public class Processor {
 	}
 
 	private static void cleanMemory() {
+		System.out.println("Isvaloma atmintis");
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				VMMemory.VMMemory[i][j] = "null";
@@ -311,9 +283,7 @@ public class Processor {
 		//
 	}
 
-	public static void printString() {
-		//
-	}
+	
 
 	public static void call() {
 		//

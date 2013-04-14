@@ -121,7 +121,7 @@ public class VM {
 	        } else if (command.startsWith("PW")){
 	        	Processor.printWord();
 	        } else if (command.startsWith("PS")){
-	        	Processor.printString();
+	        	//printString();
 	        } else if (command.startsWith("CA")){
 	        	Processor.call();
 	        } else if (command.startsWith("RETR")){

@@ -26,7 +26,7 @@ public class Memory {
 				&& (Processor.is % 10 >= 10 || (Processor.is % 10 < 0))) {
 			Processor.AP(1);
 		}
-		Processor.test();		
+		//Processor.test();		
 		return (VMMemory.VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
 	}
 
