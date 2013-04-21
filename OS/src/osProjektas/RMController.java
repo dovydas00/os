@@ -305,6 +305,7 @@ public class RMController {
 					 */
 
 					rmView.update();
+					VMView.update();
 					// rm.processor.setSI( 0 );
 					// rm.processor.setPI( 0 );
 				}
@@ -321,7 +322,7 @@ public class RMController {
 				// įkelti į klasę
 				// rm.createVirtualMachine();
 				rmView.createVirtualMachine();
-
+				
 				/*
 				 * rm.getActiveVM().addWindowListener( new WindowListener() {
 				 * 

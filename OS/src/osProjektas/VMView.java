@@ -23,17 +23,17 @@ public class VMView extends JFrame{
     JPanel registerPanel = new JPanel();
     JPanel mainPanel = new JPanel();
     JButton exitButton;
-    int registerWidth = 3;
-    private CellPaint renderer;
+    static int registerWidth = 3;
+    private static CellPaint renderer;
     
-    RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
-    RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
-    RegisterTextField cx = new RegisterTextField( registerWidth, "CX" );
-    RegisterTextField sv = new RegisterTextField( registerWidth, "SV" );
-    RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
-    RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
+    static  RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
+    static RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
+    static  RegisterTextField cx = new RegisterTextField( registerWidth, "CX" );
+    static RegisterTextField sv = new RegisterTextField( registerWidth, "SV" );
+    static RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
+    static RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
-    JTable table = new JTable( 10,10 );
+    static JTable table = new JTable( 10,10 );
 	
     public VMView( VM machine ){
         setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
@@ -77,12 +77,12 @@ public class VMView extends JFrame{
         update();
     }
     
-    public final void update(){
+    public static final void update(){
         setRegisters();
         fillTable();
     }
     
-    private void fillTable() {
+    private static void fillTable() {
         for ( int i = 0; i < 10 ; i ++ ) {
             for ( int j = 0; j < 10; j++ ) {
                 table.setValueAt( VMMemory.VMMemory[i][j], i, j );
@@ -94,7 +94,7 @@ public class VMView extends JFrame{
         table.setEnabled( false );
     }
     
-    private void setRegisters() {
+    private static void setRegisters() {
     	pr.setText( Integer.toString(Processor.pr));
         is.setText( Integer.toString(Processor.is));
         r1.setText( Integer.toString(Processor.r1));
