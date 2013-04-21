@@ -136,6 +136,10 @@ public class Processor {
 		if ((pp + sp + ap + k1 + k2 + k3 + k4 + lk) > 0) {
 			AB(1); // Bus reiksme priskiriama vienetui
 			RMController.checkInterupt();
+			System.out.println(pp +" " + sp +" "+ ap  );
+			System.out.println(k1 +" "+ k2 +" "+ k3 +" "+k4 );
+				
+			
 			AB(0);
 							// Turetu perduoti valdyma kitai VM darba, jei tokia yra sukurta
 		

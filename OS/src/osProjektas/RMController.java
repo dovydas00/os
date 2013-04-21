@@ -25,7 +25,8 @@ public class RMController {
 			return true;
 		}
 		case 2: {
-			System.out.println("Neegzistuojantis operacijos kodas");
+			rmView.outputField.setText("Neegzistuojantis operacijos kodas");
+			rmView.outputField.setText("Programa baigia darba");
 			Processor.AP(0);
 			return true;
 		}
@@ -130,12 +131,24 @@ public class RMController {
 
 			// }
 			Processor.A2(0);
+			
 			return false;
 		}
 		}
 		switch (Processor.k3) {
 		case 1: {
 			System.out.println("Pertraukimą iššaukė įšvedimo kanalas");
+			Processor.push();
+			System.out.println("Pertraukimą iššaukė įvedimo kanalas");
+			rmView.outputField.setEnabled(true);
+			rmView.outputField.requestFocusInWindow();
+			rmView.table.setEnabled(false);
+			Processor.is = Integer.parseInt(Processor.getCommand().substring(2, 4));
+			rmView.outputField.setText(VMMemory.getMemoryAtIs());
+			rmView.update();
+			Processor.pop();
+			System.out.println("Po popinimo" + Processor.is);
+			Processor.is++;
 			Processor.A3(0);
 			return false;
 		}
@@ -176,11 +189,40 @@ public class RMController {
 		}
 
 		case "GW": {
+			Processor.push();
 			Processor.BS(3);
 			Processor.A2(1); // K2 registras
 			Processor.test();
-
+			Processor.is = Integer.parseInt(command.substring(2, 4));
 			break;
+		}
+		
+		case "LR" : {
+			Processor.push();
+			Processor.is = Integer.parseInt(command.substring(2, 4));
+			System.out.println(VMMemory.getMemoryAtIs());
+			Processor.r1 = Integer.parseInt(VMMemory.getMemoryAtIs());
+			Processor.test();
+			Processor.pop();
+			Processor.is++;
+			break;
+		}
+		
+		case "SR" : {
+			Processor.push();
+			Processor.is = Integer.parseInt(command.substring(2, 4));
+			VMMemory.setMemoryAtIs(Processor.r1.toString());
+			Processor.test();
+			Processor.pop();
+			Processor.is++;
+			break;
+		}
+		
+		case "PW" : {
+			Processor.A3(1);
+			Processor.test();
+			break;
+			
 		}
 
 		default: {
@@ -243,11 +285,11 @@ public class RMController {
 					rmView.executeButton.setEnabled(false);
 				} else {
 					if (Processor.sp == 1) { // Pertraukima issaukia GD komanda
-						rmView.inputField.setEnabled(true);
-						rmView.inputField.requestFocusInWindow();
-						rmView.reloadButton.setEnabled(false);
-						rmView.executeButton.setEnabled(false);
-						rmView.table.setEnabled(false);
+				//		rmView.inputField.setEnabled(true);
+					//	rmView.inputField.requestFocusInWindow();
+						//rmView.reloadButton.setEnabled(false);
+						//rmView.executeButton.setEnabled(false);
+						//rmView.table.setEnabled(false);
 					} else if (Processor.sp == 6) { // Pertraukima issaukia HALT
 													// komanda
 						rmView.outputField.append("\nPrograma baigė darbą.\n");
@@ -339,11 +381,21 @@ public class RMController {
 						 * rm.processor.setReadWord( rmView.inputField.
 						 * getText().substring( offset ) );
 						 */
-						rmView.inputField.append("\n");
+						//rmView.inputField.append("\n");
 						offset = rmView.inputField.getText().length();
 						rmView.executeButton.setEnabled(true);
 						rmView.executeButton.requestFocusInWindow();
-						Processor.cx++;
+						if (Processor.is >=90 || Processor.is < 60){
+							Processor.AP(1);
+							Processor.test();
+						}
+						
+						VMMemory.setMemoryAtIs(rmView.inputField.getText());
+						rmView.inputField.setText("");
+						Processor.pop();
+						VMMemory.popVMRegisters();
+						Processor.is++;
+					//	Processor.cx++;  //Kam sitas? :/
 						rmView.inputField.setEnabled(false);
 						rmView.reloadButton.setEnabled(true);
 						update();
