@@ -21,12 +21,32 @@ public class Memory {
 		}
 	}
 
+	public static void setMemoryAtIs(String text) {
+		 System.out.println("IS'as paduodant atminciai" + Processor.is);
+		System.out.println(memory[~~(Processor.is / 10)][Processor.is % 10]);
+		Processor.is = Processor.r2; 
+		// System.out.println("Procesoriaus IS" + Processor.is);
+		// System.out.println("stulpelis" + ~~(Processor.is / 10));
+		// System.out.println("eilute" + Processor.is % 10);
+		// VMMemory[~~(Processor.is / 10)][Processor.is % 10] = "10";
+		int i = 4;
+		while (text.length() <i){
+			i--;
+		}
+		memory[~~(Processor.is / 10)][Processor.is % 10] ="";
+		memory[~~(Processor.is / 10)][Processor.is % 10] = text.substring(0, i) ;
+
+	}
+
 	public static String getMemoryAtIs() {
 		if ((~~(Processor.is / 10) >= 10 || (~~(Processor.is / 10) < 0))
 				&& (Processor.is % 10 >= 10 || (Processor.is % 10 < 0))) {
 			Processor.AP(1);
 		}
 		//Processor.test();		
+		if (Processor.bus == 1){
+			return memory[~~(Processor.is / 10)][Processor.is % 10]; 
+		} else 
 		return (VMMemory.VMMemory[~~(Processor.is / 10)][Processor.is % 10]);
 	}
 
@@ -36,15 +56,15 @@ public class Memory {
 		}
 		pageTable = Memory.memory[9];
 		pageTable[0] = "9";
-		pageTable[1] = "10";
-		pageTable[2] = "20";
-		pageTable[3] = "30";
-		pageTable[4] = "40";
-		pageTable[5] = "50";
-		pageTable[6] = "60";
-		pageTable[7] = "70";
-		pageTable[8] = "80";
-		pageTable[9] = "90";
+		pageTable[1] = "  ";
+		pageTable[2] = "  ";
+		pageTable[3] = "  ";
+		pageTable[4] = "  ";
+		pageTable[5] = "  ";
+		pageTable[6] = "  ";
+		pageTable[7] = "  ";
+		pageTable[8] = "  ";
+		pageTable[9] = "  ";
 	}
 
 }

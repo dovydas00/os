@@ -28,12 +28,10 @@ public class CustomTableCellRenderer extends DefaultTableCellRenderer {
 	}
 
 	public void setRMIS( int IS ) {
-		
-		for (int i =1; i<10;i++){
-			System.out.println(Memory.pageTable[i].substring(2));
-			if (Memory.pageTable[i].substring(2).equals("A")){
-				this.IC = i*100+IS;;
-			}
+	
+		if (Processor.bus == 0){
+				this.IC = Integer.parseInt(Memory.pageTable[0])*100+IS;
+		} else this.IC = IS;
+			
 		}
     }
-}

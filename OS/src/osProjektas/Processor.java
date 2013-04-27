@@ -300,7 +300,7 @@ public class Processor {
 
 	public static void assignStackToMemory() {
 
-		Memory.stack = Memory.memory[Memory.blocks - 1];
+		Memory.stack = Memory.memory[6];
 		// Processor.sv= 9;
 
 	}
@@ -326,6 +326,19 @@ public class Processor {
 
 	public static void createMemory() {
 		Memory.memory = new String[Memory.blocks][Memory.blockSize];
+		Memory.memory[0][0] = "SAVE";
+		Memory.memory[0][1] = "OPOC";
+		Memory.memory[0][2] = "PRIN";
+		Memory.memory[0][3] = "RET";
+		Memory.memory[0][4] = "SAVE";
+		Memory.memory[0][5] = "OPIC";
+		Memory.memory[0][6] = "STOR";
+		Memory.memory[0][7] = "RET";
+		Memory.memory[0][8] = "SAVE";
+		Memory.memory[0][9] = "OPOC";
+		Memory.memory[1][0] = "GET";
+		Memory.memory[1][1] = "RET";
+		
 	}
 
 	public static void createBuffer() {

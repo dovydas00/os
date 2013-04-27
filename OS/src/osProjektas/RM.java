@@ -29,6 +29,10 @@ public class RM {
 		new VMView(vm);
 	}
 
+
+	public static String getMemoryAtIS(){
+		return Memory.memory[~~(Processor.is / 10)][ Processor.is % 10];
+	}
 	private int checkFreeVM(int i) {
 		if (Memory.memory[Integer.parseInt(Memory.pageTable[i])] == null) {
 			if (i == 10) {

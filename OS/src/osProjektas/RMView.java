@@ -193,6 +193,7 @@ public class RMView extends JFrame {
 	    public final void update() {
 	        setRegisters();
 	        fillTable();
+	      
 	    }
 	    
 	    private void setRegisters() {

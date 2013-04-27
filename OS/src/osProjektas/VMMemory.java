@@ -15,14 +15,19 @@ public class VMMemory {
 	}
 
 	public static String[][] createVMMemory(int VMMemoryCount) {
+		
+		while(!Memory.pageTable[VMMemoryCount].equals("  ")){
+			VMMemoryCount++;
+		}
+		
+		Memory.pageTable[VMMemoryCount] = VMMemoryCount * 10 + "";
 		int vm = Integer.parseInt(Memory.pageTable[VMMemoryCount]);
-		Memory.pageTable[VMMemoryCount] += "A";
+		//Memory.pageTable[VMMemoryCount] += "A";
 		for (int i = 0; i < 10; i++) {
 			VMMemory[i] = Memory.memory[vm];
 			vm++;
-
 		}
-		VMMemory[5][4] = "10";
+		Memory.pageTable[0] = "" +  VMMemoryCount;
 		return VMMemory;
 	}
 
