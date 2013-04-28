@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -36,7 +38,7 @@ public class VMView extends JFrame{
     static JTable table = new JTable( 10,10 );
 	
     public VMView( VM machine ){
-        setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
+        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         setResizable( false );
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
@@ -66,8 +68,15 @@ public class VMView extends JFrame{
         registerPanel.add( is.label );
         registerPanel.add( is );
 
-        exitButton = new JButton( "Baigti darbą" );
-        
+        this.exitButton = new JButton( "Baigti darbą" );
+        exitButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+//                WindowEvent wev = new WindowEvent( window, WindowEvent.WINDOW_CLOSING);
+//                Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+            
+            }
+        });
         mainPanel.add( registerPanel );
         mainPanel.add( exitButton );
         mainPanel.add( getTablePanel() );

@@ -201,6 +201,7 @@ public class VM {
 	        return interpretNext;
 	    }
 	    
+	    
 	   /* public String getMemoryContent ( int cellNumber ) {
 	        return processor.getVirtualMemoryValue( cellNumber );
 	    }*/
