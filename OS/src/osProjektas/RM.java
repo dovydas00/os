@@ -9,7 +9,7 @@ public class RM {
 	public Processor processor = new Processor();
 	// public Processor processor = new Processor( memory );
 	public Reader reader = new Reader();
-
+	public static VMView vmView;
 	// private VMView[] virtualMachines = new VMView[2];
 	// private Integer vmId = 0;
 
@@ -26,7 +26,7 @@ public class RM {
 				System.out.print(Memory.memory[i][j]);
 			}
 		}
-		new VMView(vm);
+		vmView = new VMView(vm);
 	}
 
 

@@ -88,7 +88,9 @@ public class VMView extends JFrame{
     
     public static final void update(){
         setRegisters();
+        if (Processor.bus != 1){
         fillTable();
+        }
     }
     
     private static void fillTable() {

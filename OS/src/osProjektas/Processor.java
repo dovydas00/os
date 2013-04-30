@@ -338,7 +338,8 @@ public class Processor {
 		Memory.memory[0][9] = "OPOC";
 		Memory.memory[1][0] = "GET";
 		Memory.memory[1][1] = "RET";
-		
+		Memory.memory[2][0] = "DEST";
+		Memory.memory[2][1] = "CHEK";
 	}
 
 	public static void createBuffer() {

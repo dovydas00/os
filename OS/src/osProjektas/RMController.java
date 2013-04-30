@@ -82,6 +82,9 @@ public class RMController {
 			return true;
 
 		}
+		case 2: {
+			System.out.println("Neegzistuojantis operacijos kodas");
+		}
 		}
 		switch (Processor.lk) {
 		case 1: {
@@ -182,10 +185,11 @@ public class RMController {
 			Processor.push();
 			Processor.r2 = Integer.parseInt(Processor.getCommand().substring(2,
 					4));
-			Processor.r2 += Integer.parseInt(Memory.pageTable[0]) * 100 + 60;
+			Processor.r2 += Integer.parseInt(Memory.pageTable[0]) * 100;
 			Processor.is = 0;
 			Processor.AB(1);
 			rmView.update();
+			
 			break;
 		}
 
@@ -248,10 +252,19 @@ public class RMController {
 			break;
 
 		}
+		
+		case"HT":{
+			Processor.AB(1);
+			Processor.BS(6);
+			Processor.is = 20;
+			rmView.update();
+			break;
+			
+		}
 
 		default: {
 			Processor.AP(2);
-
+			Processor.test();
 			break;
 		}
 
@@ -282,6 +295,7 @@ public class RMController {
 				if (Processor.bus == 0) {
 					interpretCommand();
 				} else {
+					VMView.update();
 					interrpretInterrupt();
 				}
 
@@ -310,7 +324,7 @@ public class RMController {
 						// rmView.reloadButton.setEnabled(false);
 						// rmView.executeButton.setEnabled(false);
 						// rmView.table.setEnabled(false);
-					} else if (Processor.sp == 6) { // Pertraukima issaukia HALT
+					} else if (Processor.sp == 8) { // Pertraukima issaukia HALT
 													// komanda
 						rmView.outputField.append("\nPrograma baigė darbą.\n");
 						/*
@@ -465,6 +479,7 @@ public class RMController {
 			rmView.outputField.setEnabled(true);
 			Processor.is++;
 			rmView.update();
+			VMView.update();
 			break;
 		}
 
@@ -475,6 +490,8 @@ public class RMController {
 			Processor.pop();
 			Processor.is++;
 			Processor.k2 = 0;
+			VMView.update();
+			rmView.update();
 			break;
 		}
 
@@ -487,6 +504,8 @@ public class RMController {
 						+ Memory.getMemoryAtIs());
 				Processor.is++;
 			}
+			VMView.update();
+			
 			Processor.pop();
 			Processor.is++;
 			break;
@@ -499,6 +518,7 @@ public class RMController {
 			Processor.BS(0);
 			Processor.is++;
 			Processor.r2 = 0;
+			VMView.update();
 			break;
 		}
 		case "OPIC": {
@@ -521,8 +541,39 @@ public class RMController {
 			Processor.is++;
 			Processor.pop();
 			Processor.is++;
+			break;
 
 		}
+		case "DEST": {
+			for (int i=0;i<10;i++){
+				for (int j=0; j<10;j++){
+				VMMemory.VMMemory[i][j] = "  ";
+				}
+			}
+			Memory.memory[9][Integer.parseInt(Memory.memory[9][0])] = "  ";
+			Memory.memory [9][0] ="  ";
+			Processor.is++;
+			RM.vmView.dispose();
+			RMView.update();
+			
+			
+		}
+		
+		case "CHEK": {
+			for (int i=1;i<10;i++){
+				if (!Memory.memory[9][i].equals("  ")){
+				//	Processor.createMemory();
+				//	rmView.createVirtualMachine();
+					Processor.is = Integer.parseInt(Memory.memory[9][i]) + 90;
+				//	Processor.bus = 0;
+					Memory.memory[9][0] = i + " ";
+				rmView.update();
+								}			
+			}		
+			break;
+					
+		}
+		
 		}
 
 	}

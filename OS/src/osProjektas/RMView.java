@@ -24,33 +24,33 @@ public class RMView extends JFrame {
 	    //private RM RM;
 	    
 	    JButton reloadButton = new JButton( "Perkrauti" );
-	    JButton executeButton = new JButton( "Kita komanda" );
+	    static JButton executeButton = new JButton( "Kita komanda" );
 	    JButton fileLoadButton = new JButton( "Pasirinkti failą" );
-	    private int registerWidth = 3;
-	    private CustomTableCellRenderer renderer;
-	    private RegisterTextField cxV = new RegisterTextField( registerWidth, "cx" );
-	    private RegisterTextField isV = new RegisterTextField( registerWidth, "is" );
-	    private RegisterTextField r1V = new RegisterTextField( registerWidth, "R1" );
-	    private RegisterTextField r2V = new RegisterTextField( registerWidth, "R2" );
-	    private RegisterTextField prV = new RegisterTextField( registerWidth, "pr" );
-	    private RegisterTextField plrV = new RegisterTextField( registerWidth, "plr" );
-	    private RegisterTextField busV = new RegisterTextField( registerWidth, "bus" );
-	    private RegisterTextField svV = new RegisterTextField( registerWidth, "sv" );
-	    private RegisterTextField ppV = new RegisterTextField( registerWidth, "pp" );
-	    private RegisterTextField apV = new RegisterTextField( registerWidth, "ap" );
+	    private static int registerWidth = 3;
+	    private static CustomTableCellRenderer renderer;
+	    private static RegisterTextField cxV = new RegisterTextField( registerWidth, "cx" );
+	    private static RegisterTextField isV = new RegisterTextField( registerWidth, "is" );
+	    private static RegisterTextField r1V = new RegisterTextField( registerWidth, "R1" );
+	    private static RegisterTextField r2V = new RegisterTextField( registerWidth, "R2" );
+	    private static RegisterTextField prV = new RegisterTextField( registerWidth, "pr" );
+	    private static RegisterTextField plrV = new RegisterTextField( registerWidth, "plr" );
+	    private static RegisterTextField busV = new RegisterTextField( registerWidth, "bus" );
+	    private static RegisterTextField svV = new RegisterTextField( registerWidth, "sv" );
+	    private static RegisterTextField ppV = new RegisterTextField( registerWidth, "pp" );
+	    private static RegisterTextField apV = new RegisterTextField( registerWidth, "ap" );
 	
-	    private RegisterTextField k1V = new RegisterTextField( registerWidth, "k1" );
-	    private RegisterTextField k2V = new RegisterTextField( registerWidth, "k2" );
-	    private RegisterTextField k3V = new RegisterTextField( registerWidth, "k3" );
-	    private RegisterTextField k4V = new RegisterTextField( registerWidth, "k4" );
-	    private RegisterTextField lkV = new RegisterTextField( registerWidth, "lk" );
-	    private RegisterTextField spV = new RegisterTextField( registerWidth, "sp" );    
+	    private static RegisterTextField k1V = new RegisterTextField( registerWidth, "k1" );
+	    private static RegisterTextField k2V = new RegisterTextField( registerWidth, "k2" );
+	    private static RegisterTextField k3V = new RegisterTextField( registerWidth, "k3" );
+	    private static RegisterTextField k4V = new RegisterTextField( registerWidth, "k4" );
+	    private static RegisterTextField lkV = new RegisterTextField( registerWidth, "lk" );
+	    private static RegisterTextField spV = new RegisterTextField( registerWidth, "sp" );    
 	    
 	    JTextField filenameField = new JTextField( 20 );
 	    JTextArea inputField = new JTextArea();
 	    public JTextArea outputField = new JTextArea();
 	    JTextArea errorField = new JTextArea();
-	    JTable table = new JTable( ( 4095 / Memory.blockSize ), 
+	    static JTable table = new JTable( ( 4095 / Memory.blockSize ), 
 	                              Memory.blockSize );
 	    
 	    public RMView( RM RM ){
@@ -178,7 +178,7 @@ public class RMView extends JFrame {
 	     * Sukuria virtualią mašiną bei jos interfeisą.
 	     */
 	    
-	    public void createVirtualMachine(){
+	    public static void createVirtualMachine(){
 	        executeButton.setEnabled( true );
 	        //inputField.setText( "" );
 	        //outputField.setText( "" );
@@ -190,13 +190,13 @@ public class RMView extends JFrame {
 	    * Atnaujinamas realios mašinos langas.
 	    */
 	    
-	    public final void update() {
+	    public final static void update() {
 	        setRegisters();
 	        fillTable();
 	      
 	    }
 	    
-	    private void setRegisters() {
+	    private static void setRegisters() {
 	        svV.setText( Integer.toString(Processor.sv) );
 	        
 	        ppV.setText( Integer.toString(Processor.pp));
@@ -221,10 +221,10 @@ public class RMView extends JFrame {
 	     * Užpildo interfeiso lentelę virtualios mašinos atminties masyvo duomenimis.
 	     */
 	        
-	    public void fillTable() {
+	    public static void fillTable() {
 	        for( int i = 0; i < 100; i++ ){
 	            for( int j = 0; j < 10; j++ ){
-	            	this.table.setValueAt( Memory.memory[i][j], i, j );
+	            	table.setValueAt( Memory.memory[i][j], i, j );
 	            }
 	        }
 	        
