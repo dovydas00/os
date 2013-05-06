@@ -1,21 +1,23 @@
+﻿
 CS:
-PS40
-GW90
-PS49
-GW91
-LR90
-AD91
-SR92
-AD92
-AD92
-SR93
-PS58
-PW93
-HALT
+PS60
+GW83
+PS69
+GW84
+LR83
+AD84
+SR85
+AD85
+AD85
+SR86
+PS78
+PW86
+HT
 DS:
 SW00 Prašau įvesti pirmajį dėmenį:
-SW EOF$
+SEOF
 SW09 Prašau įvesti antrąjį dėmenį:
-SW EOF$
+SEOF
 SW18 Rezultatas yra:
-SW EOF$
+SEOF
+
