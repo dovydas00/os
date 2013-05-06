@@ -1,16 +1,18 @@
-
+package osProjektas;
 
 import java.awt.Component;
 import java.awt.Container;
-import javax.swing.*;
 
-/**
- *
- * @author Antanas
- */
-public class CustomJFileChooser extends JFileChooser {
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
+public class LoadCustomFile extends JFileChooser {
     
-    CustomJFileChooser() {
+	LoadCustomFile() {
         super();
     }
     

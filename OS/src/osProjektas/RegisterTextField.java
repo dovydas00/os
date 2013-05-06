@@ -1,14 +1,10 @@
-
+package osProjektas;
 
 import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-/**
- *
- * @author Antanas
- */
 
 public class RegisterTextField extends JTextField {
     

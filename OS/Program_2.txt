@@ -1,5 +1,5 @@
-CS:
-PS40
+﻿CS:
+PS00
 GW90
 GW91
 LR90

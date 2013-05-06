@@ -1,17 +1,14 @@
+package osProjektas;
 
-
-/**
- *
- * @author Antanas
- */
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class CustomTableCellRenderer extends DefaultTableCellRenderer {
+public class CellPaint extends DefaultTableCellRenderer {
     
-    int IC = 0;
+    int cx = 0;
    
     @Override
     public Component getTableCellRendererComponent(JTable table,
@@ -24,7 +21,7 @@ public class CustomTableCellRenderer extends DefaultTableCellRenderer {
                                                        isSelected, hasFocus,
                                                        row, column);
         
-        if ( row == IC / 10 && column == IC % 10 ) {
+        if ( row == cx / 10 && column == cx % 10 ) {
             c.setBackground( Color.GREEN );
         } else {
             c.setBackground( Color.WHITE );
@@ -32,7 +29,7 @@ public class CustomTableCellRenderer extends DefaultTableCellRenderer {
         return c;
     }
     
-    public void setIC( int IC ) {
-        this.IC = IC;
+    public void setCx( int cx ) {
+        this.cx = cx;
     }
 }

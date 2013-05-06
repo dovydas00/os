@@ -1,13 +1,11 @@
-
-/**
- *
- * @author Antanas
- */
+package osProjektas;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,34 +18,33 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
 
-public class VirtualMachineView extends JFrame {
+public class VMView extends JFrame{
     
     Processor processor;
-    VirtualMachine machine;
+    VM machine;
     JPanel registerPanel = new JPanel();
     JPanel mainPanel = new JPanel();
     JButton exitButton;
-    int registerWidth = 3;
-    private CustomTableCellRenderer renderer;
+    static int registerWidth = 3;
+    private static CellPaint renderer;
     
-    RegisterTextField ic = new RegisterTextField( registerWidth, "IC" );
-    RegisterTextField rn = new RegisterTextField( registerWidth, "RN" );
-    RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
-    RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
-    RegisterTextField c = new RegisterTextField( registerWidth, "C" );
-    RegisterTextField ptr = new RegisterTextField( registerWidth, "PTR" );
+    static  RegisterTextField r1 = new RegisterTextField( registerWidth, "R1" );
+    static RegisterTextField r2 = new RegisterTextField( registerWidth, "R2" );
+    static  RegisterTextField cx = new RegisterTextField( registerWidth, "CX" );
+    static RegisterTextField sv = new RegisterTextField( registerWidth, "SV" );
+    static RegisterTextField pr = new RegisterTextField( registerWidth, "PR" );
+    static RegisterTextField is = new RegisterTextField( registerWidth, "IS" );
     
-    JTable table = new JTable( ( VirtualMachine.MEMORY_SIZE / Memory.BLOCK_SIZE ), 
-                              Memory.BLOCK_SIZE );
+    static JTable table = new JTable( 10,10 );
 	
-    public VirtualMachineView( VirtualMachine machine ){
-        setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
+    public VMView( VM machine ){
+        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         setResizable( false );
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
-        this.setLocation( width - 550, 350 * ( machine.getID() ) );
+        //this.setLocation( width - 550, 350 * ( machine.getID() ) );
         this.machine = machine;
-        this.processor = machine.processor;
+      //  this.processor = machine.processor;
         this.setSize( new Dimension( 550, 350 ) );
         setTitle( "Virtuali mašina" );
         
@@ -58,21 +55,28 @@ public class VirtualMachineView extends JFrame {
                                  ) 
                                );
         
-        registerPanel.add( ic.label );
-        registerPanel.add( ic );
+        registerPanel.add( sv.label );
+        registerPanel.add( sv );
         registerPanel.add( r1.label );
         registerPanel.add( r1 );
-        registerPanel.add( c.label );
-        registerPanel.add( c );
-        registerPanel.add( rn.label );
-        registerPanel.add( rn );
+        registerPanel.add( cx.label );
+        registerPanel.add( cx );
+        registerPanel.add( pr.label );
+        registerPanel.add( pr );
         registerPanel.add( r2.label );
         registerPanel.add( r2 );
-        registerPanel.add( ptr.label );
-        registerPanel.add( ptr );
+        registerPanel.add( is.label );
+        registerPanel.add( is );
 
-        exitButton = new JButton( "Baigti darbą" );
-        
+        this.exitButton = new JButton( "Baigti darbą" );
+        exitButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+//                WindowEvent wev = new WindowEvent( window, WindowEvent.WINDOW_CLOSING);
+//                Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);
+            
+            }
+        });
         mainPanel.add( registerPanel );
         mainPanel.add( exitButton );
         mainPanel.add( getTablePanel() );
@@ -82,36 +86,40 @@ public class VirtualMachineView extends JFrame {
         update();
     }
     
-    public final void update(){
+    public static final void update(){
         setRegisters();
+        if (Processor.bus != 1){
         fillTable();
+        }
     }
     
-    private void fillTable() {
-        for ( int i = 0; i < VirtualMachine.MEMORY_SIZE / Memory.BLOCK_SIZE; i ++ ) {
-            for ( int j = 0; j < Memory.BLOCK_SIZE; j++ ) {
-                table.setValueAt( machine.getMemoryContent( i * Memory.BLOCK_SIZE + j ), i, j );
+    private static void fillTable() {
+        for ( int i = 0; i < 10 ; i ++ ) {
+            for ( int j = 0; j < 10; j++ ) {
+                table.setValueAt( VMMemory.VMMemory[i][j], i, j );
+                System.out.println(VMMemory.VMMemory[i][j]);
             }
         }
         
-        renderer.setIC( machine.processor.getIC() );
+        renderer.setCx(Processor.is );
         table.setEnabled( false );
     }
     
-    private void setRegisters() {
-        ptr.setText( processor.getPTR().toString() );
-        rn.setText( processor.getRN().toString() );
-        r1.setText( processor.getR1() );
-        r2.setText( processor.getR2() );
-        c.setText( processor.getC().toString() );
-        ic.setText( processor.getIC().toString() );
+    private static void setRegisters() {
+    	pr.setText( Integer.toString(Processor.pr));
+        is.setText( Integer.toString(Processor.is));
+        r1.setText( Integer.toString(Processor.r1));
+        r2.setText( Integer.toString(Processor.r2));
+        cx.setText( Integer.toString(Processor.cx));
+        sv.setText( Integer.toString(Processor.sv));
+    	//Integer.toString(Processor.sv) panaudot
     }
     
     private JPanel getTablePanel() {
         table.setPreferredSize( new Dimension( 500, 180 ) );
         table.setCellSelectionEnabled( false );
         table.setEnabled( false );
-        renderer = new CustomTableCellRenderer();
+        renderer = new CellPaint();
         table.setDefaultRenderer( table.getColumnClass( 0 ), renderer );
         
         JTableHeader columnHeader = table.getTableHeader();
@@ -122,18 +130,18 @@ public class VirtualMachineView extends JFrame {
                                                     ) 
                                      );
         
-        for ( int i = 0; i < Memory.BLOCK_SIZE; i++ ) {
+        for ( int i = 0; i < Memory.blockSize; i++ ) {
             columnHeader.getColumnModel().getColumn( i ).setHeaderValue( i );
         }
         
         JPanel rowHeader = new JPanel( new GridLayout( 0, 1, 0, 0 ) );
         
-        for ( int j = 0; j < RealMachine.MEMORY_SIZE / Memory.BLOCK_SIZE; j++ ) {
+        for ( int j = 0; j < 10; j++ ) {
             JLabel rowLabel = new JLabel( Integer.toString( j ) );
             rowLabel.setOpaque( true );
             rowLabel.setHorizontalAlignment( JLabel.CENTER );
             rowLabel.setPreferredSize( new Dimension( 
-                                            500 / ( Memory.BLOCK_SIZE + 1 ), 
+                                            500 / ( Memory.blockSize + 1 ), 
                                             table.getRowHeight() 
                                            ) 
                                      );
@@ -146,7 +154,7 @@ public class VirtualMachineView extends JFrame {
         
         JScrollPane tableCellPane = new JScrollPane( table );
         tableCellPane.setPreferredSize( new Dimension( 500, table.getRowHeight() * 
-                                      ( Memory.BLOCK_SIZE + 1 ) + 2 ) );
+                                      ( Memory.blockSize + 1 ) + 2 ) );
         tableCellPane.setHorizontalScrollBarPolicy( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER );
         tableCellPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER );
         tableCellPane.setRowHeaderView( rowHeader );
@@ -155,7 +163,7 @@ public class VirtualMachineView extends JFrame {
         cornerLabel.setOpaque( true );
         cornerLabel.setHorizontalAlignment( JLabel.CENTER );
         cornerLabel.setPreferredSize( new Dimension( 
-                                        500 / ( Memory.BLOCK_SIZE + 1 ), 
+                                        500 / ( Memory.blockSize + 1 ), 
                                         table.getRowHeight() 
                                         ) 
                                     );
